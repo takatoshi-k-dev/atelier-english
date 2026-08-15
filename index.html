@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="robots" content="noindex,nofollow">
+<title>Atelier English</title>
+<style>
+:root{
+  --ink:#1A1A2E; --paper:#FBFAF7; --gold:#B08D57;
+  --teal:#2C6E6B; --rust:#9C5B3B; --linec:#D9D6CF; --fog:#6B7280;
+  --jp:"Hiragino Mincho ProN","ヒラギノ明朝 ProN",serif;
+  --en:Cambria,Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  margin:0;min-height:100vh;background:var(--ink);color:var(--paper);
+  font-family:var(--jp);-webkit-text-size-adjust:100%;
+  padding:48px 28px 64px;
+}
+.wrap{max-width:720px;margin:0 auto}
+.brand{font-family:var(--en);font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--gold)}
+h1{font-size:30px;font-weight:700;margin:14px 0 0}
+.rule{height:3px;width:44px;background:var(--gold);margin:16px 0 0}
+
+.chap{font-family:var(--en);font-size:12px;font-weight:700;letter-spacing:.1em;
+      color:var(--gold);margin:44px 0 4px}
+.chap b{font-family:var(--jp);font-weight:700;color:#C9C6BF;margin-left:12px;letter-spacing:0}
+
+.list{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+a.card{
+  display:flex;align-items:center;gap:16px;text-decoration:none;
+  background:#242440;border:1px solid rgba(255,255,255,.10);border-radius:8px;
+  padding:16px 18px;color:var(--paper);transition:border-color .15s ease
+}
+a.card:active{border-color:var(--gold)}
+a.card .no{font-family:var(--en);font-size:15px;font-weight:700;color:var(--gold);
+           width:26px;flex:none}
+a.card .ttl{font-size:17px;font-weight:700;flex:1 1 auto}
+a.card .en{font-family:var(--en);font-size:11px;color:#8A8780;display:block;
+           margin-top:4px;font-weight:400}
+a.card .n{font-family:var(--en);font-size:11px;color:#8A8780;flex:none}
+
+.note{font-size:11px;color:#8A8780;margin-top:40px;line-height:1.8}
+.foot{font-family:var(--en);font-size:10px;color:#5A5750;margin-top:36px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand">ATELIER ENGLISH</div>
+  <h1>レッスン</h1>
+  <div class="rule"></div>
+
+  <div class="chap">CHAPTER 1<b>文の骨組み</b></div>
+  <div class="list">
+
+    <a class="card" href="01_品詞.html">
+      <span class="no">01</span>
+      <span class="ttl">品詞<span class="en">Parts of Speech</span></span>
+      <span class="n">35p</span>
+    </a>
+
+    <a class="card" href="02_動詞の種類.html">
+      <span class="no">02</span>
+      <span class="ttl">動詞の種類<span class="en">Two Types of Verbs</span></span>
+      <span class="n">27p</span>
+    </a>
+
+  </div>
+
+  <div class="note">
+    完成したコマから順に追加していきます。
+  </div>
+
+  <div class="foot">Atelier English</div>
+
+</div>
+</body>
+</html>

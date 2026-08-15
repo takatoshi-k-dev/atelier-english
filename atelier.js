@@ -400,6 +400,7 @@
   $('rst').onclick=()=>slides[cur].querySelectorAll('.open,.shown,.named')
       .forEach(x=>x.classList.remove('open','shown','named'));
   if(document.getElementById('fix')) $('fix').onclick=reset;
+  if(document.getElementById('home')) $('home').onclick=()=>{ location.href='index.html'; };
   $('hide').onclick=()=>{ setBar(false); };
   const peek=$('peek');
   if(peek) peek.addEventListener('click',()=>{ setBar(true); });
