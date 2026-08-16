@@ -429,13 +429,18 @@ body.barhidden #peek::after{opacity:1}
 
 /* ---------- 03以降：フロー方式の部品 ---------- */
 /* Today's Goal / Explain（ダーク背景・上下中央） */
-.goalbox{text-align:center}
+/* 全コマ共通：Today's Goal と Explain は左寄せ（02の 左63px・上140px と同じ見え方） */
+.goalbox{padding-left:27px}
 .goalbox .en{font-family:var(--en);font-size:27px;font-weight:700;
-             color:var(--paper);line-height:1.35}
-.goalbox .jp{font-size:15px;color:#9D9A93;margin-top:30px}
+             color:var(--paper);line-height:1.3}
+.goalbox .jp{font-size:15px;color:#9D9A93;margin-top:44px}
 
 /* 日本語を見て英語を言う行（タップで英語が出る） */
 .qa{display:flex;flex-direction:column;gap:14px}
+/* 短答ページ：英語の疑問文 → 日本語の答え → タップで英語の答え */
+.qa.sa .head{display:flex;align-items:baseline;gap:20px}
+.qa.sa .ask{font-family:var(--en);font-size:14px;color:var(--fog);line-height:1.3;flex:none}
+.qa.sa .q{font-size:12px;line-height:1.3}
 .qa .row .q{font-size:13px;color:var(--fog);line-height:1.5}
 .qa .row .a{font-family:var(--en);font-size:17px;font-weight:700;
             color:var(--ink);line-height:1.35;margin-top:4px;
