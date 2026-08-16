@@ -468,19 +468,19 @@ body.barhidden #peek::after{opacity:1}
                text-decoration-thickness:2px}
 
 /* 03：ページ見出し（何をしているか一目で分かる日本語） */
-.task{font-size:14px;font-weight:700;color:var(--fog);text-align:center;margin-bottom:34px}
+.task{font-size:22px;font-weight:700;color:var(--ink);text-align:center;margin-bottom:30px}
 .slide.dark .task{color:var(--paper)}
 
 /* 03：語を前へドラッグして疑問文を作る */
-.mv{display:inline-block;cursor:grab;touch-action:none}
+.mv{display:inline-block;cursor:grab;touch-action:none;color:var(--teal)}
 .mv.flying{z-index:60;box-shadow:0 6px 18px rgba(26,26,46,.3);background:var(--white)}
 
 .slot-front.over{background:rgba(176,141,87,.14)}
-.movebox.moved .mv{border-bottom-color:transparent}
-.movebox .drop-front{display:inline-block;min-width:66px;
-     border-bottom:2px dotted var(--linec)}
+
+.movebox .drop-front{display:inline-block;min-width:0;transition:min-width .12s ease}
+.movebox.dragging .drop-front{min-width:70px;border-bottom:2px dotted var(--linec)}
 .movebox .drop-front.over{background:rgba(176,141,87,.16)}
-.movebox.moved .drop-front{min-width:0;border-bottom:none}
+.movebox.moved .drop-front{min-width:0;border-bottom:none;margin-right:.28em}
 
 /* 制作中の版表示（完成したら atelier.js の VER ごと外す） */
 #ver{

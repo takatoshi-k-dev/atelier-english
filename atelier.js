@@ -365,7 +365,7 @@
   function bindMove(root){
     root.querySelectorAll('.movebox').forEach(box=>{
       if(box.dataset.mvbound) return; box.dataset.mvbound=1;
-      const mv=box.querySelector('.mv'), slot=box.querySelector('.slot-front');
+      const mv=box.querySelector('.mv'), slot=box.querySelector('.drop-front');
       if(!mv || !slot) return;
       const home=mv.parentNode, next=mv.nextSibling;
       let d=null;
@@ -381,6 +381,7 @@
         if(e.pointerType==='pen') return;
         e.preventDefault(); e.stopPropagation();
         d={x:e.clientX, y:e.clientY, k:k()};
+        box.classList.add('dragging');
         mv.classList.add('flying');
         try{ mv.setPointerCapture(e.pointerId); }catch(_){}
       }, {passive:false});
@@ -396,6 +397,7 @@
         const r=slot.getBoundingClientRect();
         const hit = e.clientX>=r.left && e.clientX<=r.right && e.clientY>=r.top && e.clientY<=r.bottom;
         mv.classList.remove('flying'); mv.style.transform='';
+        box.classList.remove('dragging');
         slot.classList.remove('over'); d=null;
         if(hit){ slot.appendChild(mv); swap(true); }
         else   { home.insertBefore(mv,next); swap(false); }
@@ -542,7 +544,7 @@
 
   /* ---------- 版の表示（制作中だけ・完成したら外す） ---------- */
   // ファイルを差し替えたのに反映されていないのか、動きが違うのかを切り分けるための目印。
-  const VER = 'v.0816-1';
+  const VER = 'v.0816-3';
   (function(){
     const el=document.createElement('div');
     el.id='ver'; el.textContent=VER;
