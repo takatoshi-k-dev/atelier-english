@@ -435,6 +435,8 @@
   /* ---------- ツールバー ---------- */
   function setBar(show){
     bar.classList.toggle('gone', !show);
+    const v=document.getElementById('ver');
+    if(v) v.classList.toggle('gone', !show);
     if(pageno) pageno.classList.toggle('gone', !show);
     document.body.classList.toggle('barhidden', !show);
   }
@@ -537,6 +539,15 @@
     $('list').onclick=()=>idx.classList.toggle('open');
     idx.addEventListener('click', e=>{ if(e.target===idx) idx.classList.remove('open'); });
   }
+
+  /* ---------- 版の表示（制作中だけ・完成したら外す） ---------- */
+  // ファイルを差し替えたのに反映されていないのか、動きが違うのかを切り分けるための目印。
+  const VER = 'v.0816-1';
+  (function(){
+    const el=document.createElement('div');
+    el.id='ver'; el.textContent=VER;
+    document.body.appendChild(el);
+  })();
 
   /* ---------- 音声 ---------- */
   // 鳴っているのは常に1つだけ。同じボタンをもう一度押すと止まる。

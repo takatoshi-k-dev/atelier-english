@@ -481,3 +481,11 @@ body.barhidden #peek::after{opacity:1}
      border-bottom:2px dotted var(--linec)}
 .movebox .drop-front.over{background:rgba(176,141,87,.16)}
 .movebox.moved .drop-front{min-width:0;border-bottom:none}
+
+/* 制作中の版表示（完成したら atelier.js の VER ごと外す） */
+#ver{
+  position:fixed;right:12px;bottom:32px;z-index:200;
+  font:600 10px/1 -apple-system,system-ui,sans-serif;
+  color:rgba(255,255,255,.38);letter-spacing:.06em
+}
+#ver.gone{opacity:0}
