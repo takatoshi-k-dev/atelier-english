@@ -138,6 +138,9 @@ h1{font-size:25px;font-weight:700;color:var(--ink);margin:21px 0 0}
 
 /* ---------- タップで開く ---------- */
 .rv{opacity:0;transition:opacity .16s ease}
+/* 場所を確保せずに割り込ませる（出るまで存在しない扱い） */
+.rv.ins{display:none;opacity:1}
+.rv.ins.open{display:inline}
 /* 見出しを押すと、そのページの残りの訳がまとめて出る（上下の詰まりは相殺） */
 h1.showall{padding:6px 10px;margin:15px 0 -6px -10px}
 /* 例文の中の語は小さいので、見た目を変えずに指の当たり判定だけ広げる */
@@ -467,14 +470,12 @@ body.barhidden #peek::after{opacity:1}
 .slide.dark .task{color:var(--paper)}
 
 /* 03：語を前へドラッグして疑問文を作る */
-.mv{display:inline-block;cursor:grab;touch-action:none;
-    padding:2px 4px;margin:0 -4px;border-radius:4px;
-    border-bottom:2px dotted var(--linec)}
+.mv{display:inline-block;cursor:grab;touch-action:none}
 .mv.flying{z-index:60;box-shadow:0 6px 18px rgba(26,26,46,.3);background:var(--white)}
-.slot-front{display:inline-block;min-width:0;height:1px;vertical-align:middle}
+
 .slot-front.over{background:rgba(176,141,87,.14)}
 .movebox.moved .mv{border-bottom-color:transparent}
-.movebox .drop-front{display:inline-block;min-width:62px;height:38px;vertical-align:middle;
-     border-bottom:2px dotted var(--linec);border-radius:4px;margin-right:10px}
+.movebox .drop-front{display:inline-block;min-width:66px;
+     border-bottom:2px dotted var(--linec)}
 .movebox .drop-front.over{background:rgba(176,141,87,.16)}
-.movebox.moved .drop-front{min-width:0;border-bottom:none;margin-right:6px}
+.movebox.moved .drop-front{min-width:0;border-bottom:none}
