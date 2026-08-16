@@ -449,6 +449,8 @@ body.barhidden #peek::after{opacity:1}
             color:var(--ink);line-height:1.35;margin-top:4px;
             display:block;padding:6px 8px;margin-left:-8px}
 .qa .row .a em{font-style:normal;color:var(--rust)}
+.qa .row .a .sep{color:var(--linec);font-weight:400}
+.qa .row .a .rv{display:inline-block;padding:5px 6px;margin:-5px -6px}
 .qa .row .a b{font-weight:700;color:var(--teal)}
 
 /* ---------- 03 解説ページ（肯定 → 否定／疑問 を組み立てる盤面） ---------- */
