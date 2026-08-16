@@ -447,3 +447,17 @@ body.barhidden #peek::after{opacity:1}
             display:block;padding:6px 8px;margin-left:-8px}
 .qa .row .a em{font-style:normal;color:var(--rust)}
 .qa .row .a b{font-weight:700;color:var(--teal)}
+
+/* ---------- 03 解説ページ（肯定 → 否定／疑問 を組み立てる盤面） ---------- */
+.build{display:flex;flex-direction:column;align-items:center;gap:18px}
+.build .ln{font-family:var(--en);font-size:26px;font-weight:700;
+           color:var(--ink);line-height:1.4;text-align:center}
+.build .ln em{font-style:normal}
+.build .ln .gap{display:inline-block;min-width:74px;border-bottom:1.5px solid var(--linec)}
+.build .arw{font-size:18px;color:var(--linec);line-height:1}
+.build .full{font-family:var(--en);font-size:16px;color:var(--fog);margin-top:-8px}
+.build .ng{position:relative;color:var(--fog)}
+.build .ng .x{font-family:var(--en);font-size:17px;font-weight:700;
+              color:#C0392B;margin-left:14px}
+.build .strike{text-decoration:line-through;text-decoration-color:#C0392B;
+               text-decoration-thickness:2px}
