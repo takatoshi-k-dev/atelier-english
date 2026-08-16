@@ -426,3 +426,19 @@ body.barhidden #peek::after{opacity:1}
       border:2px solid #C0392B;border-radius:50%}
 .dz{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;border-radius:5px}
 .dz .dcard{width:calc(50% - 3px);padding:7px 0;font-size:14px}
+
+/* ---------- 03以降：フロー方式の部品 ---------- */
+/* Today's Goal / Explain（ダーク背景・上下中央） */
+.goalbox{text-align:center}
+.goalbox .en{font-family:var(--en);font-size:27px;font-weight:700;
+             color:var(--paper);line-height:1.35}
+.goalbox .jp{font-size:15px;color:#9D9A93;margin-top:30px}
+
+/* 日本語を見て英語を言う行（タップで英語が出る） */
+.qa{display:flex;flex-direction:column;gap:14px}
+.qa .row .q{font-size:13px;color:var(--fog);line-height:1.5}
+.qa .row .a{font-family:var(--en);font-size:17px;font-weight:700;
+            color:var(--ink);line-height:1.35;margin-top:4px;
+            display:block;padding:6px 8px;margin-left:-8px}
+.qa .row .a em{font-style:normal;color:var(--rust)}
+.qa .row .a b{font-weight:700;color:var(--teal)}

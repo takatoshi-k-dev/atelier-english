@@ -36,6 +36,12 @@ a.card{
   padding:16px 18px;color:var(--paper);transition:border-color .15s ease
 }
 a.card:active{border-color:var(--gold)}
+a.card.wip{background:transparent;border-style:dashed;border-color:rgba(255,255,255,.18)}
+a.card.wip .no,a.card.wip .ttl{color:#8A8780}
+a.card.wip .tag{font-family:var(--en);font-size:10px;font-weight:700;
+                letter-spacing:.08em;color:var(--gold);
+                border:1px solid rgba(176,141,87,.5);border-radius:10px;
+                padding:3px 9px;flex:none}
 a.card .no{font-family:var(--en);font-size:15px;font-weight:700;color:var(--gold);
            width:26px;flex:none}
 a.card .ttl{font-size:17px;font-weight:700;flex:1 1 auto}
@@ -69,10 +75,16 @@ a.card .n{font-family:var(--en);font-size:11px;color:#8A8780;flex:none}
       <span class="n">27p</span>
     </a>
 
+    <a class="card wip" href="03_肯定文・否定文・疑問文.html">
+      <span class="no">03</span>
+      <span class="ttl">肯定文・否定文・疑問文<span class="en">Negatives and Questions</span></span>
+      <span class="tag">制作中</span>
+    </a>
+
   </div>
 
   <div class="note">
-    完成したコマから順に追加していきます。
+    着手したコマから並べています。<b style="color:var(--gold);font-weight:400">制作中</b>のものはレッスンでは使いません。
   </div>
 
   <div class="foot">Atelier English</div>
