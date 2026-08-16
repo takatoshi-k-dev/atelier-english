@@ -131,6 +131,7 @@
   bindDrag(document);
   bindGoto(document);
   bindOrder(document);
+  bindMove(document);
 
   /* ---------- ドラッグで分ける ---------- */
   // .dcard を .drop の上へ運ぶ。data-accept と data-kind が一致するものだけ入る。
@@ -358,7 +359,53 @@
     });
   }
 
-  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindOrder(sl); }
+  // .movebox … 文中の語(.mv)を前へドラッグして動かす。
+  //   受け皿(.slot-front)に入れると、data-swap を持つ要素が入れ替わる
+  //   （the→The、ピリオド→? など）。枠外で離すと元に戻る。
+  function bindMove(root){
+    root.querySelectorAll('.movebox').forEach(box=>{
+      if(box.dataset.mvbound) return; box.dataset.mvbound=1;
+      const mv=box.querySelector('.mv'), slot=box.querySelector('.slot-front');
+      if(!mv || !slot) return;
+      const home=mv.parentNode, next=mv.nextSibling;
+      let d=null;
+      const k=()=>{ const r=stage.getBoundingClientRect(); return r.width/720 || 1; };
+      const swap=on=>{
+        box.querySelectorAll('[data-swap]').forEach(el=>{
+          if(el.dataset.orig===undefined) el.dataset.orig=el.textContent;
+          el.textContent = on ? el.dataset.swap : el.dataset.orig;
+        });
+        box.classList.toggle('moved', on);
+      };
+      mv.addEventListener('pointerdown', e=>{
+        if(e.pointerType==='pen') return;
+        e.preventDefault(); e.stopPropagation();
+        d={x:e.clientX, y:e.clientY, k:k()};
+        mv.classList.add('flying');
+        try{ mv.setPointerCapture(e.pointerId); }catch(_){}
+      }, {passive:false});
+      mv.addEventListener('pointermove', e=>{
+        if(!d) return; e.preventDefault();
+        mv.style.transform='translate('+((e.clientX-d.x)/d.k)+'px,'+((e.clientY-d.y)/d.k)+'px)';
+        const r=slot.getBoundingClientRect();
+        slot.classList.toggle('over',
+          e.clientX>=r.left && e.clientX<=r.right && e.clientY>=r.top && e.clientY<=r.bottom);
+      });
+      const end=e=>{
+        if(!d) return;
+        const r=slot.getBoundingClientRect();
+        const hit = e.clientX>=r.left && e.clientX<=r.right && e.clientY>=r.top && e.clientY<=r.bottom;
+        mv.classList.remove('flying'); mv.style.transform='';
+        slot.classList.remove('over'); d=null;
+        if(hit){ slot.appendChild(mv); swap(true); }
+        else   { home.insertBefore(mv,next); swap(false); }
+      };
+      mv.addEventListener('pointerup', end);
+      mv.addEventListener('pointercancel', end);
+    });
+  }
+
+  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindOrder(sl); bindMove(sl); }
 
   /* ---------- ページ送り ---------- */
   function store(){

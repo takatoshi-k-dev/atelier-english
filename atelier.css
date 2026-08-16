@@ -461,3 +461,18 @@ body.barhidden #peek::after{opacity:1}
               color:#C0392B;margin-left:14px}
 .build .strike{text-decoration:line-through;text-decoration-color:#C0392B;
                text-decoration-thickness:2px}
+
+/* 03：ページ見出し（何をしているか一目で分かる日本語） */
+.task{font-size:20px;font-weight:700;color:var(--ink);text-align:center;margin-bottom:26px}
+.slide.dark .task{color:var(--paper)}
+
+/* 03：語を前へドラッグして疑問文を作る */
+.mv{display:inline-block;cursor:grab;touch-action:none;
+    padding:3px 7px;margin:0 -3px;border-radius:5px;
+    background:rgba(44,110,107,.10);border:1px dashed var(--teal)}
+.mv.flying{z-index:60;box-shadow:0 6px 18px rgba(26,26,46,.3);background:var(--white)}
+.slot-front{display:inline-block;min-width:66px;height:34px;vertical-align:middle;
+            border-bottom:1.5px dashed var(--linec);border-radius:5px;margin-right:8px}
+.slot-front.over{background:rgba(176,141,87,.14)}
+.movebox.moved .slot-front{min-width:0;border-bottom:none;margin-right:4px}
+.movebox.moved .mv{background:transparent;border-color:transparent;color:var(--teal)}
