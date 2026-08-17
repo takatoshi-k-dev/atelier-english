@@ -458,6 +458,7 @@ body.barhidden #peek::after{opacity:1}
 .build .ln{font-family:var(--en);font-size:34px;font-weight:700;
            color:var(--ink);line-height:1.4;text-align:center}
 .build .ln em{font-style:normal}
+.build .ln .sl{color:var(--linec);font-weight:400}
 .build .ln .gap{display:inline-block;min-width:74px;border-bottom:1.5px solid var(--linec)}
 .build .arw{font-size:18px;color:var(--linec);line-height:1}
 .build .full{font-family:var(--en);font-size:18px;color:var(--fog);margin-top:-6px}
@@ -489,3 +490,17 @@ body.barhidden #peek::after{opacity:1}
   color:rgba(255,255,255,.38);letter-spacing:.06em
 }
 #ver.gone{opacity:0}
+
+/* 03 解説ページ：英文は左寄りの枠内で中央揃え、右側に和訳 */
+.build{align-items:stretch}
+.build .row{display:flex;align-items:baseline}
+.build .row .ln{flex:0 0 430px}
+.build .row .jp{flex:1 1 auto;padding-left:26px;font-size:15px;
+                color:var(--fog);line-height:1.6;text-align:left}
+.build .row .jp .rv{display:inline-block;padding:8px 10px;margin:-8px -10px}
+.build .arw{align-self:flex-start;margin-left:215px;transform:translateX(-50%)}
+/* フル形は該当語の真下に置く */
+.wf{position:relative}
+.wf .full{position:absolute;left:50%;top:100%;transform:translateX(-50%);
+          margin-top:8px;white-space:nowrap;font-family:var(--en);
+          font-size:18px;font-weight:400;color:var(--fog)}
