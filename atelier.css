@@ -508,13 +508,13 @@ body.barhidden #peek::after{opacity:1}
 
 /* ---------- 03 口頭練習（番号帯で自由に行き来する盤面） ---------- */
 .dr{display:flex;flex-direction:column;gap:14px;align-items:center}
-.dr .line{display:grid;grid-template-columns:76px 1fr;align-items:baseline;
-          width:520px;text-align:left}
+.dr .line{display:grid;grid-template-columns:96px 1fr;align-items:baseline;
+          width:566px}
 .dr .line .lbl{font-size:15px;color:var(--fog);line-height:1.4}
 .dr .line .val{font-family:var(--en);font-size:24px;font-weight:700;
-               color:var(--ink);line-height:1.4}
+               color:var(--ink);line-height:1.4;text-align:center}
 .dr .line.ans .val{font-size:22px}
-.dr .line.cue .val{font-family:var(--jp);font-size:22px;font-weight:700}
+.dr .line.cue .val{font-family:var(--jp);font-size:17px;font-weight:400;color:var(--fog)}
 .dr .line .val .rv{display:inline-block;padding:6px 8px;margin:-6px -8px}
 .dr .line .val .sl{color:var(--linec);font-weight:400}
 .dr .line .val em{font-style:normal;color:var(--teal)}
