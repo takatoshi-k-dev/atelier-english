@@ -8,7 +8,7 @@
   --ink:#1A1A2E; --paper:#FBFAF7; --gold:#B08D57;
   --teal:#2C6E6B; --rust:#9C5B3B; --adv:#6E8B9C;
   --prep:#9C6E8B; --conj:#8B9C6E;
-  --linec:#D9D6CF; --fog:#4F5560; --faint:#F2F0EA;
+  --linec:#D9D6CF; --fog:#3E4450; --faint:#F2F0EA;
   --white:#FFFFFF; --inkcard:#242440;
   --muted-dark:#8A8780; --muted-paper:#A8A49C;
   --jp:"Hiragino Mincho ProN","ヒラギノ明朝 ProN",serif;
@@ -530,6 +530,7 @@ body.barhidden #peek::after{opacity:1}
 
 /* 03 一般動詞の疑問文：間違いの形を見せてから正しい形を出す */
 .build .wrong{position:relative;display:inline-block;color:var(--fog)}
-.build .wrong .x{position:absolute;left:100%;margin-left:20px;top:0;
-                 font-family:var(--en);font-size:28px;font-weight:700;color:#C0392B}
+.build .wrong .x{position:absolute;left:-16px;top:50%;transform:translateY(-52%);
+                 font-family:var(--en);font-size:46px;font-weight:700;
+                 color:#C0392B;line-height:1;pointer-events:none}
 .build .ln.stack > div + div{margin-top:16px}
