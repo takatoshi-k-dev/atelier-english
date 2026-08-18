@@ -505,3 +505,24 @@ body.barhidden #peek::after{opacity:1}
 .wf .full{position:absolute;left:50%;top:100%;transform:translateX(-50%);
           margin-top:8px;white-space:nowrap;font-family:var(--en);
           font-size:18px;font-weight:400;color:var(--fog)}
+
+/* ---------- 03 口頭練習（番号帯で自由に行き来する盤面） ---------- */
+.dr{display:flex;flex-direction:column;gap:18px;align-items:center}
+.dr .cue{font-family:var(--en);font-size:30px;font-weight:700;color:var(--ink);line-height:1.4}
+.dr .cue.jp{font-family:var(--jp);font-size:24px}
+.dr .line{display:flex;align-items:baseline;gap:18px}
+.dr .line .lbl{font-size:14px;color:var(--fog);width:34px;flex:none;text-align:right}
+.dr .line .val{font-family:var(--en);font-size:26px;font-weight:700;color:var(--ink);line-height:1.4}
+.dr .line.ans .val{font-size:24px}
+.dr .line .val .rv{display:inline-block;padding:6px 8px;margin:-6px -8px}
+.dr .line .val .sl{color:var(--linec);font-weight:400}
+.dr .line .val em{font-style:normal;color:var(--teal)}
+
+/* 番号帯（全ページ共通・1タップで飛ぶ） */
+.nav{position:absolute;left:36px;right:36px;bottom:30px;
+     display:flex;justify-content:center;align-items:center;gap:3px}
+.nav a{font-family:var(--en);font-size:15px;font-weight:700;color:var(--linec);
+       text-decoration:none;padding:7px 9px;border-radius:5px;cursor:pointer}
+.nav a.on{color:var(--gold)}
+.nav a:active{background:rgba(176,141,87,.16)}
+.nav .bar{width:1px;height:15px;background:var(--linec);margin:0 8px}
