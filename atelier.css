@@ -16,6 +16,7 @@
 }
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+em{font-style:normal}
 html{height:100%;overflow:hidden}
 body{
   margin:0;position:fixed;inset:0;overflow:hidden;background:#101018;
@@ -443,6 +444,8 @@ body.barhidden #peek::after{opacity:1}
 /* 短答ページ：英語の疑問文 → 日本語の答え → タップで英語の答え */
 .qa.sa .head{display:flex;align-items:baseline;gap:20px}
 .qa.sa .ask{font-family:var(--en);font-size:14px;color:var(--fog);line-height:1.3;flex:none}
+.qa.sa .ask b{color:var(--teal)}
+.qa.sa .ask em{color:var(--rust)}
 .qa.sa .q{font-size:12px;line-height:1.3}
 .qa .row .q{font-size:13px;color:var(--fog);line-height:1.5}
 .qa .row .a{font-family:var(--en);font-size:17px;font-weight:700;
@@ -534,3 +537,4 @@ body.barhidden #peek::after{opacity:1}
                  font-family:var(--en);font-size:46px;font-weight:700;
                  color:#C0392B;line-height:1;pointer-events:none}
 .build .ln.stack > div + div{margin-top:16px}
+.build .ln.ord{padding:12px 0;margin:-12px 0;cursor:pointer}
