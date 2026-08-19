@@ -541,3 +541,14 @@ body.barhidden #peek::after{opacity:1}
 /* 三単現：does not が出たら動詞の s が消える */
 .build .ln[data-step] .ss{display:none}
 .build .ln.ord{padding:12px 0;margin:-12px 0;cursor:pointer}
+
+/* ---------- 03 リスニング（会話） ---------- */
+.conv{display:flex;flex-direction:column;gap:4px}
+.conv .cl{display:grid;grid-template-columns:56px 1fr;align-items:baseline}
+.conv .sp{font-family:var(--en);font-size:12px;font-weight:700;color:var(--gold)}
+.conv .tx{font-family:var(--en);font-size:14px;color:var(--ink);line-height:1.85}
+.conv.bl .tx{line-height:2.3}
+.conv .tx em{color:var(--rust)}
+.conv .tx b{color:var(--teal)}
+.bank2{position:absolute;left:36px;right:36px;bottom:24px;text-align:center;
+       font-family:var(--en);font-size:13px;color:var(--teal)}
