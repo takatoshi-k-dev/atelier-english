@@ -349,7 +349,12 @@
       box.addEventListener('click', ev=>{
         ev.stopPropagation();
         const next=items.find(el=>!el.classList.contains('open'));
-        if(next){ next.classList.add('open'); return; }
+        if(next){
+          next.classList.add('open');
+          // 何段階目まで進んだかを属性で持たせる（.ss などの出し分けに使う）
+          box.setAttribute('data-step', items.filter(el=>el.classList.contains('open')).length);
+          return;
+        }
         if(last){
           const on=!box.classList.contains('done');
           box.classList.toggle('done', on);
@@ -368,6 +373,7 @@
       const mv=box.querySelector('.mv'), slot=box.querySelector('.drop-front');
       if(!mv || !slot) return;
       const home=mv.parentNode, next=mv.nextSibling;
+      box._reset=()=>{ home.insertBefore(mv,next); swap(false); };
       let d=null;
       const k=()=>{ const r=stage.getBoundingClientRect(); return r.width/720 || 1; };
       const swap=on=>{
@@ -407,7 +413,19 @@
     });
   }
 
-  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindOrder(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindMove(sl); }
+  // ページを開いたら、そのページの「出した状態」を初期に戻す。
+  // 番号帯で行き来しながら何度も練習するため。
+  // ドラッグで運んだカード（dcard）は動かさない（4→5ページの写しが壊れるため）。
+  function resetSlide(sl){
+    sl.querySelectorAll('.open,.shown,.named')
+      .forEach(x=>x.classList.remove('open','shown','named'));
+    sl.querySelectorAll('.hl.on').forEach(x=>x.classList.remove('on'));
+    sl.querySelectorAll('.done').forEach(x=>x.classList.remove('done'));
+    sl.querySelectorAll('[data-step]').forEach(x=>x.removeAttribute('data-step'));
+    sl.querySelectorAll('.movebox').forEach(b=>b._reset && b._reset());
+  }
+
+  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); resetSlide(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindOrder(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindMove(sl); }
 
   /* ---------- ページ送り ---------- */
   function store(){
@@ -448,8 +466,7 @@
   $('pen').onclick=()=>{mode='pen';$('pen').classList.add('act');$('era').classList.remove('act');setStroke();};
   $('era').onclick=()=>{mode='era';$('era').classList.add('act');$('pen').classList.remove('act');setStroke();};
   $('clr').onclick=()=>{ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,cv.width,cv.height);ctx.restore();delete saved[cur];setStroke();};
-  $('rst').onclick=()=>slides[cur].querySelectorAll('.open,.shown,.named')
-      .forEach(x=>x.classList.remove('open','shown','named'));
+  $('rst').onclick=()=>resetSlide(slides[cur]);
   if(document.getElementById('fix')) $('fix').onclick=reset;
   if(document.getElementById('home')) $('home').onclick=()=>{ location.href='index.html'; };
   $('hide').onclick=()=>{ setBar(false); };
@@ -544,7 +561,7 @@
 
   /* ---------- 版の表示（制作中だけ・完成したら外す） ---------- */
   // ファイルを差し替えたのに反映されていないのか、動きが違うのかを切り分けるための目印。
-  const VER = 'v.0819-3';
+  const VER = 'v.0819-5';
   (function(){
     const el=document.createElement('div');
     el.id='ver'; el.textContent=VER;

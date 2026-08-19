@@ -537,4 +537,7 @@ body.barhidden #peek::after{opacity:1}
                  font-family:var(--en);font-size:46px;font-weight:700;
                  color:#C0392B;line-height:1;pointer-events:none}
 .build .ln.stack > div + div{margin-top:16px}
+.build.sm2 .ln{font-size:30px}
+/* 三単現：does not が出たら動詞の s が消える */
+.build .ln[data-step] .ss{display:none}
 .build .ln.ord{padding:12px 0;margin:-12px 0;cursor:pointer}
