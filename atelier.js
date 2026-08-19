@@ -561,7 +561,7 @@
 
   /* ---------- 版の表示（制作中だけ・完成したら外す） ---------- */
   // ファイルを差し替えたのに反映されていないのか、動きが違うのかを切り分けるための目印。
-  const VER = 'v.0819-10';
+  const VER = 'v.0819-11';
   (function(){
     const el=document.createElement('div');
     el.id='ver'; el.textContent=VER;
