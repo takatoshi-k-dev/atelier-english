@@ -127,10 +127,10 @@
   bindHl(document);
   bindTr(document);
   bindSeq(document);
+  bindOrder(document);
   bindReveals(document);
   bindDrag(document);
   bindGoto(document);
-  bindOrder(document);
   bindMove(document);
 
   /* ---------- ドラッグで分ける ---------- */
@@ -407,7 +407,7 @@
     });
   }
 
-  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindOrder(sl); bindMove(sl); }
+  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindOrder(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindMove(sl); }
 
   /* ---------- ページ送り ---------- */
   function store(){
@@ -544,7 +544,7 @@
 
   /* ---------- 版の表示（制作中だけ・完成したら外す） ---------- */
   // ファイルを差し替えたのに反映されていないのか、動きが違うのかを切り分けるための目印。
-  const VER = 'v.0819-1';
+  const VER = 'v.0819-3';
   (function(){
     const el=document.createElement('div');
     el.id='ver'; el.textContent=VER;
