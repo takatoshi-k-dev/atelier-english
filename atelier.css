@@ -462,7 +462,7 @@ body.barhidden #peek::after{opacity:1}
            color:var(--ink);line-height:1.4;text-align:center}
 .build .ln em{font-style:normal}
 .build .ln .sl{color:var(--linec);font-weight:400}
-.build .ln.ans{font-size:28px}
+.build .ln.ans{font-size:26px}
 .build .ln .gap{display:inline-block;min-width:74px;border-bottom:1.5px solid var(--linec)}
 .build .arw{font-size:18px;color:var(--linec);line-height:1}
 .build .full{font-family:var(--en);font-size:18px;color:var(--fog);margin-top:-6px}
@@ -512,11 +512,11 @@ body.barhidden #peek::after{opacity:1}
 /* ---------- 03 口頭練習（番号帯で自由に行き来する盤面） ---------- */
 .dr{display:flex;flex-direction:column;gap:14px;align-items:center}
 .dr .line{display:grid;grid-template-columns:96px 1fr;align-items:baseline;
-          width:566px}
+          width:600px}
 .dr .line .lbl{font-size:15px;color:var(--fog);line-height:1.4}
-.dr .line .val{font-family:var(--en);font-size:24px;font-weight:700;
+.dr .line .val{font-family:var(--en);font-size:22px;font-weight:700;
                color:var(--ink);line-height:1.4;text-align:center}
-.dr .line.ans .val{font-size:22px}
+.dr .line.ans .val{font-size:20px}
 .dr .line.cue .val{font-family:var(--jp);font-size:17px;font-weight:400;color:var(--fog)}
 .dr .line .val .rv{display:inline-block;padding:6px 8px;margin:-6px -8px}
 .dr .line .val .sl{color:var(--linec);font-weight:400}
@@ -537,7 +537,7 @@ body.barhidden #peek::after{opacity:1}
                  font-family:var(--en);font-size:46px;font-weight:700;
                  color:#C0392B;line-height:1;pointer-events:none}
 .build .ln.stack > div + div{margin-top:16px}
-.build.sm2 .ln{font-size:30px}
+.build.sm2 .ln{font-size:27px}
 /* 三単現：does not が出たら動詞の s が消える */
 .build .ln[data-step] .ss{display:none}
 .build .ln.ord{padding:12px 0;margin:-12px 0;cursor:pointer}
