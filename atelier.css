@@ -530,6 +530,7 @@ body.barhidden #peek::after{opacity:1}
 .nav a.on{color:var(--gold)}
 .nav a:active{background:rgba(176,141,87,.16)}
 .nav .bar{width:1px;height:15px;background:var(--linec);margin:0 8px}
+.nav a.nx{color:var(--gold);font-size:13px;padding:7px 12px}
 
 /* 03 一般動詞の疑問文：間違いの形を見せてから正しい形を出す */
 .build .wrong{position:relative;display:inline-block;color:var(--fog)}
