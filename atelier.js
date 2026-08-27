@@ -61,7 +61,7 @@
     const r = cv.getBoundingClientRect();
     return { x:(e.clientX-r.left)/r.width*720, y:(e.clientY-r.top)/r.height*405 };
   }
-  function width(e){ return (mode==='era') ? 10 : 0.5 + (e.pressure||.5)*1.2; }
+  function width(e){ return (mode==='era') ? 7 : 0.3 + (e.pressure||.5)*0.9; }
 
   function down(e){
     if(e.pointerType!=='pen') return;          // 指・マウスはタップとして通す
