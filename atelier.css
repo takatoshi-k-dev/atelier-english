@@ -570,9 +570,9 @@ body.barhidden #peek::after{opacity:1}
 .tbl .cell .rv em{color:#E0A96D}
 
 /* 練習ページのヒント（英文の右上・枠だけ見えていてタップで中身が出る） */
-.hintrow{width:600px;text-align:right;margin-bottom:2px}
+.hintrow{width:600px;display:flex;justify-content:flex-end;gap:8px;margin-bottom:2px}
 .hint{display:inline-block;border:1px dashed var(--linec);border-radius:12px;
       padding:5px 14px;font-size:13px;color:var(--ink);line-height:1.45;
       white-space:nowrap;cursor:pointer;text-align:left}
-.hint .rv{display:block}
+
 .hint .rv em{font-style:normal;font-family:var(--en);font-weight:700;color:var(--rust)}
