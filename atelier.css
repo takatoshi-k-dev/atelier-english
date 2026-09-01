@@ -589,3 +589,14 @@ body.barhidden #peek::after{opacity:1}
 .rv10 .item[data-step="3"] .vb{color:var(--rust)}
 .rv10 .base{font-family:var(--en);font-size:17px;font-weight:700;color:var(--rust);
             text-align:left;margin-top:3px}
+
+/* ---------- 04 原形の整理（変化した形 → 原形） ---------- */
+.bf{display:flex;flex-direction:column;align-items:center;gap:14px}
+.bf .lab{font-size:15px;font-weight:700;line-height:1.5}
+.bf .grp{display:flex;flex-direction:column;gap:10px}
+.bf .r{display:grid;grid-template-columns:200px 60px 200px;align-items:baseline}
+.bf .l,.bf .rt{font-family:var(--en);font-size:24px;font-weight:700;
+                color:var(--ink);line-height:1.4;text-align:center}
+.bf .ar{text-align:center;color:var(--linec);font-size:18px}
+.bf .rt .rv{display:inline-block;padding:6px 12px;margin:-6px -12px}
+.bf .gap{height:16px}
