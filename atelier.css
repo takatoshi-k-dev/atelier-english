@@ -541,6 +541,10 @@ body.barhidden #peek::after{opacity:1}
 .build.sm2 .ln{font-size:27px}
 /* 三単現：does not が出たら動詞の s が消える */
 .build .ln[data-step] .ss{display:none}
+/* 命令文の否定：Don't が出たら文頭が小文字になる */
+.build .ln .low{display:none}
+.build .ln[data-step] .cap{display:none}
+.build .ln[data-step] .low{display:inline}
 .build .ln.ord{padding:12px 0;margin:-12px 0;cursor:pointer}
 
 /* ---------- 03 リスニング（会話） ---------- */
@@ -600,3 +604,14 @@ body.barhidden #peek::after{opacity:1}
 .bf .ar{text-align:center;color:var(--linec);font-size:18px}
 .bf .rt .rv{display:inline-block;padding:6px 12px;margin:-6px -12px}
 .bf .gap{height:16px}
+
+/* ---------- 04 命令文の解説（原形 ▶ 命令文） ---------- */
+.imp{display:grid;grid-template-columns:120px 54px 1fr;align-items:baseline;
+     width:600px;margin:0 auto}
+.imp .base{font-family:var(--en);font-size:30px;font-weight:700;
+           color:var(--gold);text-align:right;line-height:1.4}
+.imp .ar{text-align:center;color:var(--linec);font-size:18px}
+.imp .out{font-family:var(--en);font-size:34px;font-weight:700;
+          color:var(--ink);line-height:1.4}
+.imp .out em{font-style:normal}
+.imp .out .rv{display:inline-block;padding:6px 8px;margin:-6px -8px}
