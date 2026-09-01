@@ -554,6 +554,7 @@ body.barhidden #peek::after{opacity:1}
 .conv .cl{display:grid;grid-template-columns:56px 1fr;align-items:baseline}
 .conv .sp{font-family:var(--en);font-size:12px;font-weight:700;color:var(--gold)}
 .conv .tx{font-family:var(--en);font-size:13px;color:var(--ink);line-height:1.9}
+.conv.sm .tx{font-size:12px;line-height:1.45}
 .conv.bl .tx{line-height:1.9}
 .conv .tx em{color:var(--rust)}
 .conv .tx b{color:var(--teal)}
@@ -618,3 +619,15 @@ body.barhidden #peek::after{opacity:1}
           color:var(--ink);line-height:1.4}
 .imp .out em{font-style:normal}
 .imp .out .rv{display:inline-block;padding:6px 8px;margin:-6px -8px}
+
+/* ---------- 04 リスニングの設問（Memo） ---------- */
+.memo6{display:flex;flex-direction:column;gap:16px}
+.memo6 .r{display:grid;grid-template-columns:1fr 230px;align-items:baseline;
+          column-gap:20px;width:648px}
+.memo6 .n{display:none}
+.memo6 .qq{font-size:15px;color:var(--ink);line-height:1.4}
+.memo6 .qq.en{font-family:var(--en);font-size:14px;font-weight:700}
+.memo6 .aa{font-family:var(--en);font-size:15px;font-weight:700;color:var(--rust);
+           line-height:1.4;border-bottom:1.5px solid var(--linec)}
+.memo6 .aa.jp{font-family:var(--jp);font-size:15px}
+.memo6 .aa .rv{display:inline-block;padding:5px 8px;margin:-5px -8px}
