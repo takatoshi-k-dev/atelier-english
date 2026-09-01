@@ -632,7 +632,7 @@ body.barhidden #peek::after{opacity:1}
 .memo6 .aa{font-family:var(--en);font-size:15px;font-weight:700;color:var(--rust);
            line-height:1.4;border-bottom:1.5px solid var(--linec)}
 .memo6 .aa.jp{font-family:var(--jp);font-size:15px}
-.memo6 .aa .rv{display:inline-block;padding:11px 14px;margin:-11px -14px}
+.memo6 .aa .rv{display:block;padding:11px 14px;margin:-11px -14px}
 
 /* ---------- 04 Explain（日本語 → 英語を言わせる） ---------- */
 .ex7{display:flex;flex-direction:column;gap:14px}
@@ -641,5 +641,5 @@ body.barhidden #peek::after{opacity:1}
 .ex7 .jp{font-size:15px;color:#C9C6BF;line-height:1.4}
 .ex7 .en{font-family:var(--en);font-size:18px;font-weight:700;color:var(--paper);
          line-height:1.4;border-bottom:1px dashed rgba(255,255,255,.22)}
-.ex7 .en .rv{display:inline-block;padding:10px 12px;margin:-10px -12px}
+.ex7 .en .rv{display:block;padding:10px 12px;margin:-10px -12px}
 .ex7 .en em{font-style:normal;color:#E0A96D}
