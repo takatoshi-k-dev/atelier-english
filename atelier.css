@@ -582,10 +582,10 @@ body.barhidden #peek::after{opacity:1}
 .hint .rv em{font-style:normal;font-family:var(--en);font-weight:700;color:var(--rust)}
 
 /* ---------- 04 復習（日本語 → 英文 → 動詞に色 → 原形） ---------- */
-.rv10{display:flex;flex-direction:column;gap:16px}
+.rv10{display:flex;flex-direction:column;gap:12px}
 .rv10 .item{display:grid;grid-template-columns:1fr 96px;align-items:baseline;
             column-gap:24px;width:600px}
-.rv10 .q{grid-column:1 / -1;font-size:13px;color:var(--fog);line-height:1.5}
+.rv10 .q{grid-column:1 / -1;font-size:12px;color:var(--fog);line-height:1.5}
 .rv10 .a{font-family:var(--en);font-size:17px;font-weight:700;color:var(--ink);
          line-height:1.4;margin-top:3px;display:inline-block;padding:5px 7px;margin-left:-7px}
 .rv10 .a .vb{transition:color .16s ease}
@@ -606,10 +606,9 @@ body.barhidden #peek::after{opacity:1}
 .bf .gap{height:16px}
 
 /* ---------- 04 命令文の解説（原形 ▶ 命令文） ---------- */
-.imp{display:grid;grid-template-columns:120px 54px 1fr;align-items:baseline;
-     width:600px;margin:0 auto}
+.imp{display:flex;justify-content:center;align-items:baseline;gap:30px}
 .imp .base{font-family:var(--en);font-size:30px;font-weight:700;
-           color:var(--gold);text-align:right;line-height:1.4}
+           color:var(--gold);line-height:1.4}
 .imp .ar{text-align:center;color:var(--linec);font-size:18px}
 .imp .out{font-family:var(--en);font-size:34px;font-weight:700;
           color:var(--ink);line-height:1.4}
