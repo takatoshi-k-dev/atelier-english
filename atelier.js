@@ -560,7 +560,7 @@
   }
 
   /* ---------- 版の表示（制作中だけ・完成したら外す） ---------- */
-  const VER = 'v.0901-1';
+  const VER = 'v.0901-2';
   (function(){
     const el=document.createElement('div');
     el.id='ver'; el.textContent=VER;

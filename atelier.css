@@ -607,6 +607,8 @@ body.barhidden #peek::after{opacity:1}
 
 /* ---------- 04 命令文の解説（原形 ▶ 命令文） ---------- */
 .imp{display:flex;justify-content:center;align-items:baseline;gap:30px}
+.impjp{text-align:center;font-size:16px;color:var(--fog);margin-top:26px}
+.impjp .rv{display:inline-block;padding:7px 12px;margin:-7px -12px}
 .imp .base{font-family:var(--en);font-size:30px;font-weight:700;
            color:var(--gold);line-height:1.4}
 .imp .ar{text-align:center;color:var(--linec);font-size:18px}
