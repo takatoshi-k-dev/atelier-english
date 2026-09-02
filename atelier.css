@@ -221,13 +221,14 @@ h1.showall{padding:6px 10px;margin:15px 0 -6px -10px}
   cursor:pointer;background:transparent;white-space:nowrap
 }
 .play.on{background:var(--gold);color:var(--paper)}
-.replay{
+.replay,.back3{
   display:inline-flex;align-items:center;justify-content:center;
-  font-size:15px;color:var(--gold);
-  border:1px solid var(--gold);border-radius:13px;padding:4px 11px;
-  cursor:pointer;background:transparent
+  border-radius:13px;cursor:pointer;background:transparent
 }
-.replay:active{background:rgba(176,141,87,.18)}
+.replay{font-size:15px;color:var(--gold);border:1px solid var(--gold);padding:4px 11px}
+.back3{font-family:var(--en);font-size:12px;font-weight:700;color:var(--fog);
+       border:1px solid var(--linec);padding:5px 11px}
+.replay:active,.back3:active{background:rgba(176,141,87,.18)}
 .slide.dark .play{color:var(--gold)}
 
 /* ==========================================================

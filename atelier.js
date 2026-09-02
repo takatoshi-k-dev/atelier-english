@@ -560,7 +560,7 @@
   /* ---------- 音声 ---------- */
   // 鳴っているのは常に1つだけ。
   // 同じボタンをもう一度押すと一時停止、さらに押すと続きから。
-  // 「↻」ボタンで頭に戻す。ページを移ると止まり、位置も捨てる。
+  // 「◂3s」で3秒戻る。「↻」で頭に戻す。ページを移ると止まり、位置も捨てる。
   let snd=null, sndBtn=null;
   function stopAudio(){
     if(snd){ snd.pause(); snd=null; }
@@ -582,6 +582,15 @@
         a.addEventListener('ended', ()=>{ if(sndBtn) sndBtn.classList.remove('on'); });
         a.play().catch(()=>{});
         snd=a; sndBtn=b; b.classList.add('on');
+      });
+    });
+    root.querySelectorAll('.back3').forEach(b=>{
+      if(b.dataset.pbound) return; b.dataset.pbound=1;
+      b.addEventListener('click', ev=>{
+        ev.stopPropagation();
+        if(!snd) return;
+        snd.currentTime=Math.max(0, snd.currentTime-3);
+        if(snd.paused){ snd.play().catch(()=>{}); if(sndBtn) sndBtn.classList.add('on'); }
       });
     });
     root.querySelectorAll('.replay').forEach(b=>{
