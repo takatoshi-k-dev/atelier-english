@@ -6,6 +6,14 @@
    これ1つを直せば、全レッスンの動作が変わります。
    ========================================================== */
 (function(){
+
+  /* ---------- 版表示（制作中のみ。完成したらこのブロックごと外す） ---------- */
+  const VER = 'v.0902-1';
+  const verEl = document.createElement('div');
+  verEl.id = 'ver';
+  verEl.textContent = VER;
+  document.body.appendChild(verEl);
+
   const stage = document.getElementById('stage');
   const fit   = document.getElementById('fit');
   const cv    = document.getElementById('ink');
@@ -456,6 +464,7 @@
   function setBar(show){
     bar.classList.toggle('gone', !show);
     if(pageno) pageno.classList.toggle('gone', !show);
+    if(verEl)  verEl.classList.toggle('gone', !show);
     document.body.classList.toggle('barhidden', !show);
   }
   const $=id=>document.getElementById(id);
