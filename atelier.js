@@ -558,8 +558,9 @@
   }
 
   /* ---------- 音声 ---------- */
-  // 鳴っているのは常に1つだけ。同じボタンをもう一度押すと止まる。
-  // ページを移ると自動で止まる。
+  // 鳴っているのは常に1つだけ。
+  // 同じボタンをもう一度押すと一時停止、さらに押すと続きから。
+  // 「↻」ボタンで頭に戻す。ページを移ると止まり、位置も捨てる。
   let snd=null, sndBtn=null;
   function stopAudio(){
     if(snd){ snd.pause(); snd=null; }
@@ -571,13 +572,26 @@
       b.addEventListener('click', ev=>{
         ev.stopPropagation();
         const src=b.dataset.src; if(!src) return;
-        const same=(sndBtn===b);
-        stopAudio();
-        if(same) return;                       // 同じボタン＝停止だけ
+        if(sndBtn===b && snd){                 // 同じボタン＝一時停止／続きから
+          if(snd.paused){ snd.play().catch(()=>{}); b.classList.add('on'); }
+          else { snd.pause(); b.classList.remove('on'); }
+          return;
+        }
+        stopAudio();                           // 別のボタン＝最初から
         const a=new Audio(src);
-        a.addEventListener('ended', stopAudio);
+        a.addEventListener('ended', ()=>{ if(sndBtn) sndBtn.classList.remove('on'); });
         a.play().catch(()=>{});
         snd=a; sndBtn=b; b.classList.add('on');
+      });
+    });
+    root.querySelectorAll('.replay').forEach(b=>{
+      if(b.dataset.pbound) return; b.dataset.pbound=1;
+      b.addEventListener('click', ev=>{
+        ev.stopPropagation();
+        if(!snd) return;                       // 何も選ばれていなければ何もしない
+        snd.currentTime=0;
+        snd.play().catch(()=>{});
+        if(sndBtn) sndBtn.classList.add('on');
       });
     });
   }
