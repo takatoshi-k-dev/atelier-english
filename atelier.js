@@ -8,13 +8,13 @@
 (function(){
 
   /* ---------- 版表示（制作中のみ。完成したらこのブロックごと外す） ----------
-     VER は共通ファイル（js/css）の版。#stage の data-ver はそのコマの版。
-     コマのHTMLだけ差し替えたときも右下の表示が変わるようにしてある。 */
-  const VER = 'v.0915-2';
+     番号の実体は NN_単元名.html の #stage data-ver。HTMLだけ差し替えても表示が変わる。
+     VER は data-ver が無いとき（完成済みコマ）の控え。 */
+  const VER = '0915-3';
   const verEl = document.createElement('div');
   verEl.id = 'ver';
   const stageVer = (document.getElementById('stage') || {dataset:{}}).dataset.ver;
-  verEl.textContent = stageVer ? VER + ' / ' + stageVer : VER;
+  verEl.textContent = stageVer || VER;
   document.body.appendChild(verEl);
 
   const stage = document.getElementById('stage');
