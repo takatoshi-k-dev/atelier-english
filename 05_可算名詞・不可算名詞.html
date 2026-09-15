@@ -159,7 +159,30 @@
   <div class="foot">Atelier English &nbsp;/&nbsp; 05</div>
 </section>
 
+<canvas id="ink"></canvas>
 </div></div>
+
+<div id="bar">
+  <button id="prev">◀</button>
+  <button id="next">▶</button>
+  <span class="sep"></span>
+  <button id="pen" class="act">ペン</button>
+  <button id="era">消しゴム</button>
+  <button id="clr">全消し</button>
+  <span class="sep"></span>
+  <button data-color="#C0392B">赤</button>
+  <button data-color="#2C6E6B">緑</button>
+  <button data-color="#1A1A2E">黒</button>
+  <span class="sep"></span>
+  <button id="rst">答えを隠す</button>
+  <button id="list">ページ一覧</button><button id="home">一覧へ</button>
+  <button id="fix">表示を直す</button>
+  <button id="hide">バーを消す</button>
+</div>
+<div id="peek"></div>
+<div id="pageno"></div>
+<div id="index"><button class="close" onclick="document.getElementById('index').classList.remove('open')">閉じる</button><div id="indexGrid"></div></div>
+
 <script src="atelier.js"></script>
 </body>
 </html>
