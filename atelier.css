@@ -409,7 +409,7 @@ body.barhidden #peek::after{opacity:1}
 /* 本文の語をタップして色を付ける（まだ品詞を決めていない段階の色＝ゴールド） */
 .hl{display:inline-block;padding:5px 3px;margin:-5px -3px;
     color:inherit;transition:color .16s ease}
-.hl.on{color:var(--gold);font-weight:700}
+.hl.on{color:var(--gold);background:rgba(176,141,87,.14);border-radius:3px}
 .vl{font-family:var(--en);font-weight:700;color:var(--ink);line-height:1.2}
 .fx{font-family:var(--en);font-size:16px;color:var(--ink);line-height:1.2}
 .fx em{font-style:normal;font-weight:700}
