@@ -183,7 +183,7 @@ h1.showall{padding:6px 10px;margin:15px 0 -6px -10px}
 }
 .frame .dcard{width:100%;padding:8px 0}
 .head .dcard{padding:4px 10px;box-shadow:none;background:transparent;color:currentColor}
-.dcard.sm{font-size:11px;padding:4px 7px}
+.dcard.sm{font-size:10px;padding:3px 6px}
 .dcard.flying{z-index:60;box-shadow:0 6px 18px rgba(26,26,46,.3)}
 .drop.over{background:rgba(176,141,87,.12)}
 .frame.drop.over{border-style:solid;border-color:var(--gold)}
@@ -439,6 +439,8 @@ body.barhidden #peek::after{opacity:1}
       border:2px solid #C0392B;border-radius:50%}
 .dz{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;border-radius:5px}
 .dz .dcard{width:calc(50% - 3px);padding:7px 0;font-size:14px}
+/* 語数の多い分類課題：2列固定をやめ、幅で折り返す */
+.dz.flow .dcard{width:auto;padding:3px 6px;font-size:10px}
 
 /* ---------- 03以降：フロー方式の部品 ---------- */
 /* Today's Goal / Explain（ダーク背景・上下中央） */
