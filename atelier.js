@@ -7,11 +7,14 @@
    ========================================================== */
 (function(){
 
-  /* ---------- 版表示（制作中のみ。完成したらこのブロックごと外す） ---------- */
-  const VER = 'v.0902-1';
+  /* ---------- 版表示（制作中のみ。完成したらこのブロックごと外す） ----------
+     VER は共通ファイル（js/css）の版。#stage の data-ver はそのコマの版。
+     コマのHTMLだけ差し替えたときも右下の表示が変わるようにしてある。 */
+  const VER = 'v.0915-2';
   const verEl = document.createElement('div');
   verEl.id = 'ver';
-  verEl.textContent = VER;
+  const stageVer = (document.getElementById('stage') || {dataset:{}}).dataset.ver;
+  verEl.textContent = stageVer ? VER + ' / ' + stageVer : VER;
   document.body.appendChild(verEl);
 
   const stage = document.getElementById('stage');
