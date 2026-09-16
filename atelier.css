@@ -654,3 +654,33 @@ body.barhidden #peek::after{opacity:1}
          line-height:1.4;border-bottom:1px dashed rgba(255,255,255,.22)}
 .ex7 .en .rv{display:block;padding:10px 12px;margin:-10px -12px}
 .ex7 .en em{font-style:normal;color:#E0A96D}
+
+/* ---------- 復習コマ：26問の番号帯（2段） ---------- */
+.nav2{position:absolute;left:36px;right:36px;bottom:18px;
+      display:flex;flex-direction:column;align-items:center;gap:2px}
+.nav2 .rowb{display:flex;justify-content:center;align-items:center;gap:2px}
+.nav2 a{font-family:var(--en);font-size:14px;font-weight:700;color:var(--linec);
+        text-decoration:none;padding:5px 8px;border-radius:5px;cursor:pointer}
+.nav2 a.on{color:var(--gold)}
+.nav2 a:active{background:rgba(176,141,87,.16)}
+
+/* ---------- 復習コマ：発音 ---------- */
+.pr{display:flex;flex-direction:column;gap:16px;align-items:center}
+.pr .p{display:grid;grid-template-columns:1fr 54px 1fr;align-items:start;width:560px}
+.pr .w{text-align:center}
+.pr .w .en{font-family:var(--en);font-size:28px;font-weight:700;color:var(--ink);line-height:1.4}
+.pr .w .ipa{font-family:var(--en);font-size:14px;color:var(--fog);line-height:1.5;margin-top:3px}
+.pr .w .ipa .rv{display:inline-block;padding:6px 10px;margin:-6px -10px}
+.pr .mid{text-align:center;color:var(--linec);font-size:20px;line-height:1.4}
+
+.prs{display:flex;flex-direction:column;gap:20px}
+.prs .s{width:648px}
+.prs .en{font-family:var(--en);font-size:24px;font-weight:700;color:var(--ink);line-height:1.4}
+.prs .en em{font-style:normal;color:var(--rust)}
+.prs .en b{font-weight:700;color:var(--teal)}
+.prs .jp{font-size:14px;color:var(--fog);line-height:1.5;margin-top:4px}
+.prs .jp .rv{display:inline-block;padding:7px 10px;margin:-7px -10px}
+.prpt{margin-top:24px;display:flex;flex-direction:column;gap:6px}
+.prpt .l{font-size:14px;color:var(--ink);line-height:1.7}
+.prpt .l i{font-family:var(--en);font-style:normal;font-weight:700;color:var(--rust);
+           display:inline-block;width:42px}
