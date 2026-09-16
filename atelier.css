@@ -566,6 +566,7 @@ body.barhidden #peek::after{opacity:1}
 .conv .sp{font-family:var(--en);font-size:12px;font-weight:700;color:var(--gold)}
 .conv .tx{font-family:var(--en);font-size:13px;color:var(--ink);line-height:1.9}
 .conv.sm .tx{font-size:12px;line-height:1.45}
+.conv.sm2 .tx{font-size:12px;line-height:1.5}
 .conv.bl .tx{line-height:1.9}
 .conv .tx em{color:var(--rust)}
 .conv .tx b{color:var(--teal)}
