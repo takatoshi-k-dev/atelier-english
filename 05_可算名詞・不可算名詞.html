@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="atelier.css">
 </head>
 <body>
-<div id="fit"><div id="stage" data-ver="0922-5">
+<div id="fit"><div id="stage" data-ver="0922-6">
 
 <!-- ===== 1 表紙 ===== -->
 <section class="slide dark on">
@@ -116,38 +116,38 @@
   <div class="body abs">
   <div style="position:absolute;left:61px;top:54px;width:598px;font-size:15px;color:var(--fog)">2つの箱に分ける</div>
   <div class="pool drop" data-accept="n" style="position:absolute;left:36px;top:76px;width:648px;height:72px">
-    <div class="dcard sm" data-kind="n">team</div>
-    <div class="dcard sm" data-kind="n">office</div>
-    <div class="dcard sm" data-kind="n">month</div>
-    <div class="dcard sm" data-kind="n">information</div>
-    <div class="dcard sm" data-kind="n">desk</div>
-    <div class="dcard sm" data-kind="n">email</div>
-    <div class="dcard sm" data-kind="n">morning</div>
-    <div class="dcard sm" data-kind="n">manager</div>
-    <div class="dcard sm" data-kind="n">advice</div>
-    <div class="dcard sm" data-kind="n">day</div>
-    <div class="dcard sm" data-kind="n">week</div>
-    <div class="dcard sm" data-kind="n">book</div>
-    <div class="dcard sm" data-kind="n">file</div>
-    <div class="dcard sm" data-kind="n">box</div>
-    <div class="dcard sm" data-kind="n">copy</div>
-    <div class="dcard sm" data-kind="n">schedule</div>
-    <div class="dcard sm" data-kind="n">furniture</div>
-    <div class="dcard sm" data-kind="n">chair</div>
-    <div class="dcard sm" data-kind="n">Monday</div>
-    <div class="dcard sm" data-kind="n">money</div>
-    <div class="dcard sm" data-kind="n">question</div>
-    <div class="dcard sm" data-kind="n">budget</div>
-    <div class="dcard sm" data-kind="n">finance team</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">team</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">office</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">month</div>
+    <div class="dcard sm" data-kind="n" data-ans="u">information</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">desk</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">email</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">morning</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">manager</div>
+    <div class="dcard sm" data-kind="n" data-ans="u">advice</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">day</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">week</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">book</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">file</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">box</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">copy</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">schedule</div>
+    <div class="dcard sm" data-kind="n" data-ans="u">furniture</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">chair</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">Monday</div>
+    <div class="dcard sm" data-kind="n" data-ans="u">money</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">question</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">budget</div>
+    <div class="dcard sm" data-kind="n" data-ans="c">finance team</div>
   </div>
 
   <div style="position:absolute;left:36px;top:154px;width:648px;height:104px;background:var(--white);border:1.5px solid var(--teal);border-radius:5px"></div>
   <div style="position:absolute;left:36px;top:160px;width:648px;text-align:center;font-size:14px;font-weight:700;color:var(--teal)">可算名詞</div>
-  <div class="drop dz flow" data-accept="n" style="position:absolute;left:54px;top:182px;width:612px;height:70px"></div>
+  <div id="sortC" class="drop dz flow" data-accept="n" style="position:absolute;left:54px;top:182px;width:612px;height:70px"></div>
 
   <div style="position:absolute;left:36px;top:264px;width:648px;height:104px;background:var(--white);border:1.5px solid var(--rust);border-radius:5px"></div>
   <div style="position:absolute;left:36px;top:270px;width:648px;text-align:center;font-size:14px;font-weight:700;color:var(--rust)">不可算名詞</div>
-  <div class="drop dz flow" data-accept="n" style="position:absolute;left:54px;top:292px;width:612px;height:70px"></div>
+  <div id="sortU" class="drop dz flow" data-accept="n" style="position:absolute;left:54px;top:292px;width:612px;height:70px"></div>
   </div>
 
   <div class="foot">Atelier English &nbsp;/&nbsp; 05</div>
@@ -357,40 +357,15 @@
 
   <div class="eyebrow"><i></i><span>Answers</span></div>
   <div class="body abs">
-  <div style="position:absolute;left:61px;top:52px;width:598px;text-align:center;font-size:22px;font-weight:700;color:var(--ink)">分けた23語</div>
+  <div style="position:absolute;left:61px;top:52px;width:598px;text-align:center;font-size:22px;font-weight:700;color:var(--ink)">答え合わせ</div>
 
   <div style="position:absolute;left:36px;top:100px;width:648px;height:120px;background:var(--white);border:1.5px solid var(--teal);border-radius:5px"></div>
   <div style="position:absolute;left:36px;top:108px;width:648px;text-align:center;font-size:14px;font-weight:700;color:var(--teal)">可算名詞</div>
-  <div class="dz flow rv" style="position:absolute;left:54px;top:132px;width:612px;height:82px">
-    <div class="dcard sm">team</div>
-    <div class="dcard sm">office</div>
-    <div class="dcard sm">month</div>
-    <div class="dcard sm">desk</div>
-    <div class="dcard sm">email</div>
-    <div class="dcard sm">morning</div>
-    <div class="dcard sm">manager</div>
-    <div class="dcard sm">day</div>
-    <div class="dcard sm">week</div>
-    <div class="dcard sm">book</div>
-    <div class="dcard sm">file</div>
-    <div class="dcard sm">box</div>
-    <div class="dcard sm">copy</div>
-    <div class="dcard sm">schedule</div>
-    <div class="dcard sm">chair</div>
-    <div class="dcard sm">Monday</div>
-    <div class="dcard sm">question</div>
-    <div class="dcard sm">budget</div>
-    <div class="dcard sm">finance team</div>
-  </div>
+  <div class="dz flow judge" data-mirror="#sortC" data-bin="c" style="position:absolute;left:54px;top:132px;width:612px;height:82px"></div>
 
   <div style="position:absolute;left:36px;top:232px;width:648px;height:120px;background:var(--white);border:1.5px solid var(--rust);border-radius:5px"></div>
   <div style="position:absolute;left:36px;top:240px;width:648px;text-align:center;font-size:14px;font-weight:700;color:var(--rust)">不可算名詞</div>
-  <div class="dz flow rv" style="position:absolute;left:54px;top:264px;width:612px;height:82px">
-    <div class="dcard sm">information</div>
-    <div class="dcard sm">advice</div>
-    <div class="dcard sm">furniture</div>
-    <div class="dcard sm">money</div>
-  </div>
+  <div class="dz flow judge" data-mirror="#sortU" data-bin="u" style="position:absolute;left:54px;top:264px;width:612px;height:82px"></div>
   </div>
 
   <div class="foot">Atelier English &nbsp;/&nbsp; 05</div>
