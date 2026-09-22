@@ -10,7 +10,7 @@
   /* ---------- 版表示（制作中のみ。完成したらこのブロックごと外す） ----------
      番号の実体は NN_単元名.html の #stage data-ver。HTMLだけ差し替えても表示が変わる。
      VER は data-ver が無いとき（完成済みコマ）の控え。 */
-  const VER = '0915-3';
+  const VER = '0922-6';
   const verEl = document.createElement('div');
   verEl.id = 'ver';
   const stageVer = (document.getElementById('stage') || {dataset:{}}).dataset.ver;
@@ -216,6 +216,20 @@
         const n=c.cloneNode(true);
         n.className='card'; n.style.transform=''; n.removeAttribute('data-dbound');
         dst.appendChild(n);
+      });
+    });
+  }
+
+  // .judge … 写し取った箱（data-mirror）を触ると、入れる箱を間違えた語に .ng を付ける／もう一度で外す
+  //          カードの data-ans と、箱の data-bin が食い違うものが間違い
+  function bindJudge(root){
+    root.querySelectorAll('.judge').forEach(box=>{
+      if(box.dataset.jbound) return; box.dataset.jbound=1;
+      box.addEventListener('click', ev=>{
+        ev.stopPropagation();
+        const cards=[...box.querySelectorAll('[data-ans]')];
+        const on=!cards.some(c=>c.classList.contains('ng'));
+        cards.forEach(c=>c.classList.toggle('ng', on && c.dataset.ans!==box.dataset.bin));
       });
     });
   }
@@ -432,11 +446,12 @@
       .forEach(x=>x.classList.remove('open','shown','named'));
     sl.querySelectorAll('.hl.on').forEach(x=>x.classList.remove('on'));
     sl.querySelectorAll('.done').forEach(x=>x.classList.remove('done'));
+    sl.querySelectorAll('.ng').forEach(x=>x.classList.remove('ng'));
     sl.querySelectorAll('[data-step]').forEach(x=>x.removeAttribute('data-step'));
     sl.querySelectorAll('.movebox').forEach(b=>b._reset && b._reset());
   }
 
-  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); resetSlide(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindOrder(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindMove(sl); }
+  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); resetSlide(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindOrder(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindMove(sl); bindJudge(sl); }
 
   /* ---------- ページ送り ---------- */
   function store(){
