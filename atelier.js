@@ -10,7 +10,7 @@
   /* ---------- 版表示（制作中のみ。完成したらこのブロックごと外す） ----------
      番号の実体は NN_単元名.html の #stage data-ver。HTMLだけ差し替えても表示が変わる。
      VER は data-ver が無いとき（完成済みコマ）の控え。 */
-  const VER = '0922-6';
+  const VER = '0922-7';
   const verEl = document.createElement('div');
   verEl.id = 'ver';
   const stageVer = (document.getElementById('stage') || {dataset:{}}).dataset.ver;
@@ -220,13 +220,22 @@
     });
   }
 
-  // .judge … 写し取った箱（data-mirror）を触ると、入れる箱を間違えた語に .ng を付ける／もう一度で外す
-  //          カードの data-ans と、箱の data-bin が食い違うものが間違い
+  // .judge … 写し取った箱（data-mirror）の判定
+  //   箱の空いている部分を触る → 入れる箱を間違えた語に .ng（もう一度で外す）
+  //   .ng の語を触る          → 正しい方の箱へ移し、.ng を外す
   function bindJudge(root){
     root.querySelectorAll('.judge').forEach(box=>{
       if(box.dataset.jbound) return; box.dataset.jbound=1;
       box.addEventListener('click', ev=>{
         ev.stopPropagation();
+        const card=ev.target.closest('[data-ans]');
+        if(card){
+          if(!card.classList.contains('ng')) return;
+          const slide=box.closest('.slide');
+          const dest=[...slide.querySelectorAll('.judge')].find(b=>b.dataset.bin===card.dataset.ans);
+          if(dest){ card.classList.remove('ng'); dest.appendChild(card); }
+          return;
+        }
         const cards=[...box.querySelectorAll('[data-ans]')];
         const on=!cards.some(c=>c.classList.contains('ng'));
         cards.forEach(c=>c.classList.toggle('ng', on && c.dataset.ans!==box.dataset.bin));
