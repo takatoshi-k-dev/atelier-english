@@ -316,17 +316,26 @@
       const hs=[...g.querySelectorAll('.hl')];
       const after=g.querySelector('.after');
       if(after) after.dataset.bound=1;
+      // .hlgroup.all … 1つずつではなく、どこを触っても全部を一斉に色づける
+      const all=g.classList.contains('all');
+      const toggleAll=()=>{
+        const on=!hs.every(x=>x.classList.contains('on'));
+        hs.forEach(x=>x.classList.toggle('on', on));
+      };
       hs.forEach(el=>{
         el.dataset.bound=1;
         el.addEventListener('click', ev=>{
           ev.stopPropagation();
+          if(all){ toggleAll(); return; }
           el.classList.toggle('on');
           if(after && !hs.every(x=>x.classList.contains('on'))) after.classList.remove('open');
         });
       });
       const slide=g.closest('.slide')||g;
       slide.addEventListener('click', ev=>{
-        if(ev.target.closest('.hl') || !after) return;
+        if(ev.target.closest('.hl')) return;
+        if(all){ toggleAll(); return; }
+        if(!after) return;
         if(hs.every(x=>x.classList.contains('on'))) after.classList.toggle('open');
       });
     });
