@@ -575,6 +575,9 @@ body.barhidden #peek::after{opacity:1}
 .conv.sm2 .tx{font-size:12px;line-height:1.5}
 .conv.tight .tx{font-size:12px;line-height:1.45}  /* 15行＋語群が入るページ用 */
 .conv.bl .tx{line-height:1.9}
+.conv.lg .cl{grid-template-columns:76px 1fr}      /* 10行程度の会話。大きく見せる */
+.conv.lg .sp{font-size:15px}
+.conv.lg .tx{font-size:18px;line-height:1.5}
 .conv .tx em{color:var(--rust)}
 .conv .tx b{color:var(--teal)}
 .bank2{position:absolute;left:36px;right:36px;bottom:22px;text-align:center;
