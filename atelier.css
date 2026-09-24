@@ -411,6 +411,9 @@ body.barhidden #peek::after{opacity:1}
 .hl{display:inline-block;padding:5px 3px;margin:-5px -3px;
     color:inherit;transition:color .16s ease}
 .hl.on{color:var(--gold)}
+/* 冠詞を拾うページ（06〜）。1〜2文字なので当たり判定を広げ、色ははっきり出す */
+.hl.art{padding:6px 7px;margin:-6px -7px}
+.hl.art.on{color:#C0392B}
 .vl{font-family:var(--en);font-weight:700;color:var(--ink);line-height:1.2}
 .fx{font-family:var(--en);font-size:16px;color:var(--ink);line-height:1.2}
 .fx em{font-style:normal;font-weight:700}
