@@ -69,6 +69,9 @@ h1{font-size:25px;font-weight:700;color:var(--ink);margin:21px 0 0}
 /* ---------- セクション扉 ---------- */
 .divider .big{font-size:44px;font-weight:700;margin:0}
 .divider .accent{height:4px;width:50px;margin-top:16px}
+/* 小さい区切り（解説の中でブロックが変わるとき）。dark を付けず、一段軽くする */
+.divider.sub .big{font-size:28px;color:var(--ink)}
+.divider.sub .accent{height:3px;width:34px;margin-top:12px}
 
 /* ---------- 定義ページ（Keynote と同じ位置：見出し27%・カード49〜76%） ---------- */
 .slide.def{padding-top:0}
