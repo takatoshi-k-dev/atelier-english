@@ -583,6 +583,28 @@ body.barhidden #peek::after{opacity:1}
 .conv.lg .tx{font-size:18px;line-height:1.5}
 .conv .tx em{color:var(--rust)}
 .conv.t17 .tx{line-height:1.3}                     /* 17行入るページ（06のリスニング②） */
+
+/* ---------- R 復習 瞬間英作文（1ページ1問） ---------- */
+.sic{display:flex;flex-direction:column;align-items:center;gap:28px}
+.sic .jp{font-size:19px;color:var(--ink);line-height:1.6;text-align:center;max-width:600px}
+.sic .en{font-family:var(--en);font-size:26px;font-weight:700;color:var(--ink);
+        line-height:1.5;text-align:center;max-width:624px}
+.sic .en .rv{display:inline-block;padding:7px 9px;margin:-7px -9px}
+.sic.two .en{font-size:22px}        /* 2文セット */
+.sic.long .en{font-size:20px}       /* 長い文 */
+.nav.dense a{font-size:13px;padding:7px 6px}   /* 番号が18個入る帯 */
+
+/* R 復習 型の一覧・語彙の箱（セルの中身は必ず div で包むこと） */
+.grid4{display:grid;grid-template-columns:86px 1fr 1fr 1fr;gap:6px;align-items:stretch}
+.grid4 .hd{font-size:12px;color:var(--fog);text-align:center;padding:2px 0}
+.grid4 .rh{font-size:14px;color:var(--ink);display:flex;align-items:center}
+.grid4 .cell{background:var(--white);border:1.5px solid var(--linec);border-radius:5px;
+             padding:9px 8px;font-family:var(--en);font-size:13px;font-weight:700;
+             color:var(--ink);text-align:center;line-height:1.35}
+.slot{display:grid;align-items:baseline;column-gap:14px;width:600px;margin:0 auto}
+.slot .h{font-size:11px;color:var(--fog);padding-bottom:2px}
+.slot .v{font-family:var(--en);font-size:19px;color:var(--ink);line-height:1.9}
+.slot .v.fix{color:var(--linec)}
 .conv .tx b{color:var(--teal)}
 .bank2{position:absolute;left:36px;right:36px;bottom:22px;text-align:center;
        font-family:var(--en);font-size:12px;color:var(--teal)}
