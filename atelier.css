@@ -594,6 +594,15 @@ body.barhidden #peek::after{opacity:1}
 .sic.long .en{font-size:20px}       /* 長い文 */
 .nav.dense a{font-size:13px;padding:7px 6px}   /* 番号が18個入る帯 */
 
+/* R 復習 主語ドリル（主語だけを見て動詞の形を言う） */
+.subj{display:flex;flex-direction:column;gap:12px}
+.subj .r{display:grid;grid-template-columns:1fr 34px 1fr;align-items:baseline}
+.subj .s{font-family:var(--en);font-size:21px;color:var(--ink);text-align:right;line-height:1.45}
+.subj .m{text-align:center;color:var(--linec);font-size:12px}
+.subj .a{font-family:var(--en);font-size:21px;font-weight:700;color:var(--teal);text-align:left;line-height:1.45}
+.subj .a .rv{display:inline-block;padding:6px 10px;margin:-6px -10px}
+.subj.gen .a{color:var(--rust)}           /* 2周目は一般動詞なので色を変える（02の色分けに揃える） */
+
 /* R 復習 型の一覧・語彙の箱（セルの中身は必ず div で包むこと） */
 .grid4{display:grid;grid-template-columns:86px 1fr 1fr 1fr;gap:6px;align-items:stretch}
 .grid4 .hd{font-size:12px;color:var(--fog);text-align:center;padding:2px 0}
