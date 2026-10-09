@@ -760,6 +760,14 @@ body.barhidden #peek::after{opacity:1}
            justify-content:flex-end;padding-right:12px;margin:0;
            font-family:var(--en);font-size:24px;font-weight:700;color:var(--teal)}
 .ec .j .rv.x{color:#C0392B}
+/* 2回目のタップ：誤り文が正しい文に入れ替わる。直した所だけ色を変える
+   （teal＝be動詞・名詞まわり、rust＝一般動詞。02からの色の意味をそのまま使う） */
+.ec .s .ecc{display:none;color:var(--ink)}
+.ec .r[data-st="2"] .s .ecw{display:none}
+.ec .r[data-st="2"] .s .ecc{display:inline}
+.ec .s .ecc em{font-style:normal;font-weight:700}
+.ec .s .ecc.fxv em{color:var(--rust)}
+.ec .s .ecc.fxn em{color:var(--teal)}
 
 /* 扉のタイトルを英語で出すとき（活動名は英語・文法用語は日本語） */
 .divider.sub .big.en{font-family:var(--en);font-size:30px;letter-spacing:.01em}

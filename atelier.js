@@ -122,6 +122,26 @@
     });
   }
 
+  // .ec .r … 間違い探しの1行。正しい文＝1回で ○。誤り文＝1回目 ✗、2回目で正しい文に入れ替わる。
+  //           押せる場所は行全体（印だけだと iPad の指では当たらない）。
+  function bindEc(root){
+    root.querySelectorAll('.ec .r').forEach(row=>{
+      if(row.dataset.ecbound) return; row.dataset.ecbound=1;
+      const marks=[...row.querySelectorAll('.rv')];
+      marks.forEach(m=>m.dataset.bound=1);          // 個別タップは無効にする
+      const max = row.classList.contains('fix') ? 2 : 1;
+      const x  = row.querySelector('.rv.x');
+      const ok = row.querySelector('.rv.ok');
+      row.addEventListener('click', ev=>{
+        ev.stopPropagation();
+        const st = ((+row.dataset.st || 0) + 1) % (max + 1);
+        row.dataset.st = st;
+        if(x)  x.classList.toggle('open', st === 1);
+        if(ok) ok.classList.toggle('open', st === max);
+      });
+    });
+  }
+
   function bindReveals(root){
     root.querySelectorAll('.rv').forEach(el=>{
       if(el.dataset.bound) return; el.dataset.bound=1;
@@ -139,6 +159,7 @@
   bindTr(document);
   bindSeq(document);
   bindOrder(document);
+  bindEc(document);
   bindReveals(document);
   bindDrag(document);
   bindGoto(document);
@@ -466,10 +487,11 @@
     sl.querySelectorAll('.done').forEach(x=>x.classList.remove('done'));
     sl.querySelectorAll('.ng').forEach(x=>x.classList.remove('ng'));
     sl.querySelectorAll('[data-step]').forEach(x=>x.removeAttribute('data-step'));
+    sl.querySelectorAll('[data-st]').forEach(x=>x.removeAttribute('data-st'));
     sl.querySelectorAll('.movebox').forEach(b=>b._reset && b._reset());
   }
 
-  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); resetSlide(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindOrder(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindMove(sl); bindJudge(sl); }
+  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); resetSlide(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindOrder(sl); bindEc(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindMove(sl); bindJudge(sl); }
 
   /* ---------- ページ送り ---------- */
   function store(){
