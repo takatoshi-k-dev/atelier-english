@@ -142,6 +142,22 @@
     });
   }
 
+  // .spot … 聞き取り間違い探しのパッセージ。どこを触っても、次の1か所が開く。
+  //         開いた所は「印刷された語に取り消し線＋実際に言っている語」。
+  //         全部開いた後にもう一度触ると最初に戻る。
+  function bindSpot(root){
+    root.querySelectorAll('.spot').forEach(box=>{
+      if(box.dataset.spbound) return; box.dataset.spbound=1;
+      const sps=[...box.querySelectorAll('.sp')];
+      box.addEventListener('click', ev=>{
+        ev.stopPropagation();
+        const next = sps.find(s=>!s.classList.contains('on'));
+        if(next) next.classList.add('on');
+        else sps.forEach(s=>s.classList.remove('on'));
+      });
+    });
+  }
+
   function bindReveals(root){
     root.querySelectorAll('.rv').forEach(el=>{
       if(el.dataset.bound) return; el.dataset.bound=1;
@@ -160,6 +176,7 @@
   bindSeq(document);
   bindOrder(document);
   bindEc(document);
+  bindSpot(document);
   bindReveals(document);
   bindDrag(document);
   bindGoto(document);
@@ -488,10 +505,11 @@
     sl.querySelectorAll('.ng').forEach(x=>x.classList.remove('ng'));
     sl.querySelectorAll('[data-step]').forEach(x=>x.removeAttribute('data-step'));
     sl.querySelectorAll('[data-st]').forEach(x=>x.removeAttribute('data-st'));
+    sl.querySelectorAll('.sp.on').forEach(x=>x.classList.remove('on'));
     sl.querySelectorAll('.movebox').forEach(b=>b._reset && b._reset());
   }
 
-  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); resetSlide(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindOrder(sl); bindEc(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindMove(sl); bindJudge(sl); }
+  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); resetSlide(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindOrder(sl); bindEc(sl); bindSpot(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindMove(sl); bindJudge(sl); }
 
   /* ---------- ページ送り ---------- */
   function store(){

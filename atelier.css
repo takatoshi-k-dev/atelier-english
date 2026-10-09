@@ -771,3 +771,14 @@ body.barhidden #peek::after{opacity:1}
 
 /* 扉のタイトルを英語で出すとき（活動名は英語・文法用語は日本語） */
 .divider.sub .big.en{font-family:var(--en);font-size:30px;letter-spacing:.01em}
+
+/* ---------- R 復習 リスニング ---------- */
+/* 聞き取り間違い探し。画面の文は全部「文法的に正しい」ので、音と比べるしかない */
+.spot{font-family:var(--en);font-size:17px;line-height:1.8;color:var(--ink);
+      width:648px;text-align:left}
+.sp .good{display:none}
+.sp.on .bad{text-decoration:line-through;text-decoration-thickness:1px;color:var(--fog)}
+.sp.on .good{display:inline;color:var(--rust);font-weight:700;margin-left:6px}
+.spnote{text-align:center;font-size:13px;color:var(--fog);margin-bottom:16px}
+/* 本文を文字で見せるページ */
+.ptxt{font-family:var(--en);font-size:17px;line-height:1.8;color:var(--ink);width:648px}
