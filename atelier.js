@@ -142,21 +142,18 @@
     });
   }
 
-  // .spot … 聞き取り間違い探しのパッセージ。どこを触っても、次の1か所が開く。
-  //         開いた所は「印刷された語に取り消し線＋実際に言っている語」。
-  //         全部開いた後にもう一度触ると最初に戻る。
+  // .spot … 聞き取り間違い探し。箇所ごとに独立。
+  //   その語句をタップ → 1回目で線、2回目で実際に言っている語、3回目で元に戻る。
+  //   生徒が前から順に見つけるとは限らないので、順番は決めない。
   function bindSpot(root){
-    root.querySelectorAll('.spot').forEach(box=>{
-      if(box.dataset.spbound) return; box.dataset.spbound=1;
-      const sps=[...box.querySelectorAll('.sp')];
-      box.addEventListener('click', ev=>{
+    root.querySelectorAll('.spot .sp').forEach(sp=>{
+      if(sp.dataset.spbound) return; sp.dataset.spbound=1;
+      sp.addEventListener('click', ev=>{
         ev.stopPropagation();
-        // 1回目＝その箇所に線、2回目＝実際に言っている語。それから次の箇所へ。
-        const last = sps.filter(s=>s.classList.contains('on')).pop();
-        if(last && !last.classList.contains('on2')){ last.classList.add('on2'); return; }
-        const next = sps.find(s=>!s.classList.contains('on'));
-        if(next) next.classList.add('on');
-        else sps.forEach(s=>s.classList.remove('on','on2'));
+        const n = ((+sp.dataset.sp || 0) + 1) % 3;
+        sp.dataset.sp = n;
+        sp.classList.toggle('on',  n >= 1);
+        sp.classList.toggle('on2', n === 2);
       });
     });
   }
@@ -508,7 +505,7 @@
     sl.querySelectorAll('.ng').forEach(x=>x.classList.remove('ng'));
     sl.querySelectorAll('[data-step]').forEach(x=>x.removeAttribute('data-step'));
     sl.querySelectorAll('[data-st]').forEach(x=>x.removeAttribute('data-st'));
-    sl.querySelectorAll('.sp.on').forEach(x=>x.classList.remove('on','on2'));
+    sl.querySelectorAll('.sp').forEach(x=>{x.classList.remove('on','on2');x.removeAttribute('data-sp');});
     sl.querySelectorAll('.movebox').forEach(b=>b._reset && b._reset());
   }
 
