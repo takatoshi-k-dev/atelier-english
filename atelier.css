@@ -786,9 +786,3 @@ body.barhidden #peek::after{opacity:1}
 /* 本文を文字で見せるページ */
 .ptxt{font-family:var(--en);font-size:17px;line-height:1.8;color:var(--ink);width:648px}
 
-/* True / False はレッスン共通の .tfgrid を使う。
-   指でタップできるように行の高さだけ確保し、見た目は変えない。 */
-.tfgrid.r6 .tfr{min-height:34px}
-.tfgrid.r6 .tfr .tfb{transition:color .16s ease}
-.tfgrid.r6 .tfr[data-st="1"] .tfb{color:var(--linec)}
-.tfgrid.r6 .tfr[data-st="1"] .tfb.ans{color:var(--teal)}

@@ -125,7 +125,7 @@
   // .ec .r … 間違い探しの1行。正しい文＝1回で ○。誤り文＝1回目 ✗、2回目で正しい文に入れ替わる。
   //           押せる場所は行全体（印だけだと iPad の指では当たらない）。
   function bindEc(root){
-    root.querySelectorAll('.ec .r, .tfgrid .tfr').forEach(row=>{
+    root.querySelectorAll('.ec .r').forEach(row=>{
       if(row.dataset.ecbound) return; row.dataset.ecbound=1;
       const marks=[...row.querySelectorAll('.rv')];
       marks.forEach(m=>m.dataset.bound=1);          // 個別タップは無効にする
