@@ -751,8 +751,14 @@ body.barhidden #peek::after{opacity:1}
 .ec .n{font-family:var(--en);font-size:14px;font-weight:700;color:var(--linec);text-align:right}
 .ec .s{font-family:var(--en);font-size:20px;color:var(--ink);line-height:1.4}
 .ec .j{text-align:center}
-.ec .j .rv{display:inline-block;font-family:var(--en);font-size:24px;font-weight:700;
-           padding:6px 10px;margin:-6px -10px;color:var(--teal)}
+/* 判定を置く場所を点線で見せておく（空欄のうちに自分で答えを決めてもらう） */
+.ec .j .box{display:inline-block;width:40px;height:40px;vertical-align:middle;
+            border:1px dashed var(--linec);border-radius:10px}
+/* タップ範囲は行全体。24pxの字だけを狙わせると iPad ではまず当たらない */
+.ec .r{position:relative}
+.ec .j .rv{position:absolute;inset:0;display:flex;align-items:center;
+           justify-content:flex-end;padding-right:12px;margin:0;
+           font-family:var(--en);font-size:24px;font-weight:700;color:var(--teal)}
 .ec .j .rv.x{color:#C0392B}
 
 /* 扉のタイトルを英語で出すとき（活動名は英語・文法用語は日本語） */
