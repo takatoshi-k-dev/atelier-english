@@ -151,9 +151,12 @@
       const sps=[...box.querySelectorAll('.sp')];
       box.addEventListener('click', ev=>{
         ev.stopPropagation();
+        // 1回目＝その箇所に線、2回目＝実際に言っている語。それから次の箇所へ。
+        const last = sps.filter(s=>s.classList.contains('on')).pop();
+        if(last && !last.classList.contains('on2')){ last.classList.add('on2'); return; }
         const next = sps.find(s=>!s.classList.contains('on'));
         if(next) next.classList.add('on');
-        else sps.forEach(s=>s.classList.remove('on'));
+        else sps.forEach(s=>s.classList.remove('on','on2'));
       });
     });
   }
@@ -505,7 +508,7 @@
     sl.querySelectorAll('.ng').forEach(x=>x.classList.remove('ng'));
     sl.querySelectorAll('[data-step]').forEach(x=>x.removeAttribute('data-step'));
     sl.querySelectorAll('[data-st]').forEach(x=>x.removeAttribute('data-st'));
-    sl.querySelectorAll('.sp.on').forEach(x=>x.classList.remove('on'));
+    sl.querySelectorAll('.sp.on').forEach(x=>x.classList.remove('on','on2'));
     sl.querySelectorAll('.movebox').forEach(b=>b._reset && b._reset());
   }
 

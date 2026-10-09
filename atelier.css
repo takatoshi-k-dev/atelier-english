@@ -780,7 +780,7 @@ body.barhidden #peek::after{opacity:1}
 .sp{position:relative;display:inline-block}
 .sp .good{display:none}
 .sp.on .bad{text-decoration:line-through;text-decoration-thickness:1px;color:var(--fog)}
-.sp.on .good{display:block;position:absolute;left:0;bottom:calc(100% - 7px);
+.sp.on2 .good{display:block;position:absolute;left:0;bottom:calc(100% - 7px);
              white-space:nowrap;font-size:14px;line-height:1.1;
              color:var(--rust);font-weight:700}
 /* 本文を文字で見せるページ */
