@@ -545,6 +545,13 @@ body.barhidden #peek::after{opacity:1}
 .dr .line .val .sl{color:var(--linec);font-weight:400}
 .dr .line .val em{font-style:normal;color:var(--teal)}
 
+/* 1行が2行に折り返しても絶対に重ならない組み方（R 復習の「文にする」）。
+   ・枠を最初から2行ぶんの高さにする（上下の空きを使う）
+   ・欄を 648px まで広げ、見出しを 84px にして本文に 564px 取る
+   ・baseline を使わない。中央に置く（多行のとき baseline が最終行になる実装差を避ける） */
+.dr.tall{gap:6px}
+.dr.tall .line{width:648px;grid-template-columns:84px 1fr;min-height:64px;align-items:center}
+
 /* 番号帯（全ページ共通・1タップで飛ぶ） */
 .nav{position:absolute;left:36px;right:36px;bottom:30px;
      display:flex;justify-content:center;align-items:center;gap:3px}
