@@ -743,3 +743,17 @@ body.barhidden #peek::after{opacity:1}
 .prpt .l{font-size:14px;color:var(--ink);line-height:1.7}
 .prpt .l i{font-family:var(--en);font-style:normal;font-weight:700;color:var(--rust);
            display:inline-block;width:42px}
+
+/* ---------- R 復習 間違い探し（○✗だけ出す。直した形は画面に出さない） ---------- */
+.ec{display:flex;flex-direction:column;gap:8px}
+.ec .r{display:grid;grid-template-columns:30px 1fr 46px;align-items:center;
+       column-gap:10px;width:648px;min-height:50px}
+.ec .n{font-family:var(--en);font-size:14px;font-weight:700;color:var(--linec);text-align:right}
+.ec .s{font-family:var(--en);font-size:20px;color:var(--ink);line-height:1.4}
+.ec .j{text-align:center}
+.ec .j .rv{display:inline-block;font-family:var(--en);font-size:24px;font-weight:700;
+           padding:6px 10px;margin:-6px -10px;color:var(--teal)}
+.ec .j .rv.x{color:#C0392B}
+
+/* 扉のタイトルを英語で出すとき（活動名は英語・文法用語は日本語） */
+.divider.sub .big.en{font-family:var(--en);font-size:30px;letter-spacing:.01em}
