@@ -534,7 +534,8 @@ body.barhidden #peek::after{opacity:1}
 /* ---------- 03 口頭練習（番号帯で自由に行き来する盤面） ---------- */
 .dr{display:flex;flex-direction:column;gap:14px;align-items:center}
 .dr .line{display:grid;grid-template-columns:96px 1fr;align-items:baseline;
-          width:600px}
+          width:600px;flex:none}
+/* flex:none が無いと、入りきらないとき行が縮んで文字が重なる（枠からは出ないので検査で素通りする） */
 .dr .line .lbl{font-size:15px;color:var(--fog);line-height:1.4}
 .dr .line .val{font-family:var(--en);font-size:22px;font-weight:700;
                color:var(--ink);line-height:1.4;text-align:center}
