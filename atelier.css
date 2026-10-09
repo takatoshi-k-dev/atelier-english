@@ -600,6 +600,11 @@ body.barhidden #peek::after{opacity:1}
 .sic .en .rv{display:inline-block;padding:7px 9px;margin:-7px -9px}
 .sic.two .en{font-size:22px}        /* 2文セット */
 .sic.long .en{font-size:20px}       /* 長い文 */
+
+/* 英文を画面のちょうど真ん中に置く。ヒントは枠の外（絶対配置）にして、
+   有無で本文の位置が動かないようにする */
+.sic{position:relative;top:-42px}
+.hintrow.float{position:absolute;left:36px;right:36px;top:72px;width:auto;margin:0}
 .nav.dense a{font-size:13px;padding:7px 6px}   /* 番号が18個入る帯 */
 
 /* R 復習 主語ドリル（主語だけを見て動詞の形を言う） */
