@@ -171,6 +171,19 @@
     });
   }
 
+  // Script のページ … 主語（.sj）と動詞（.vb）を別々にタップする。互いに独立。
+  //   主語 … 1回目 下線 / 2回目 中心の語に色 / 3回目 戻る
+  //   動詞 … 1回目 太く見せる / 2回目 be か一般かで色分け / 3回目 戻る
+  function bindMark(root){
+    root.querySelectorAll('.ptxt .sj, .ptxt .vb').forEach(el=>{
+      if(el.dataset.mbound) return; el.dataset.mbound=1;
+      el.addEventListener('click', ev=>{
+        ev.stopPropagation();
+        el.dataset.m = ((+el.dataset.m || 0) + 1) % 3;
+      });
+    });
+  }
+
   function bindReveals(root){
     root.querySelectorAll('.rv').forEach(el=>{
       if(el.dataset.bound) return; el.dataset.bound=1;
@@ -191,6 +204,7 @@
   bindEc(document);
   bindSpot(document);
   bindAnat(document);
+  bindMark(document);
   bindReveals(document);
   bindDrag(document);
   bindGoto(document);
@@ -521,10 +535,11 @@
     sl.querySelectorAll('[data-st]').forEach(x=>x.removeAttribute('data-st'));
     sl.querySelectorAll('.sp').forEach(x=>{x.classList.remove('on','on2');x.removeAttribute('data-sp');});
     sl.querySelectorAll('.anat').forEach(x=>{x.classList.remove('a1','a2','a3','a4');x.removeAttribute('data-an');});
+    sl.querySelectorAll('[data-m]').forEach(x=>x.removeAttribute('data-m'));
     sl.querySelectorAll('.movebox').forEach(b=>b._reset && b._reset());
   }
 
-  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); resetSlide(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindOrder(sl); bindEc(sl); bindSpot(sl); bindAnat(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindMove(sl); bindJudge(sl); }
+  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); resetSlide(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindOrder(sl); bindEc(sl); bindSpot(sl); bindAnat(sl); bindMark(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindMove(sl); bindJudge(sl); }
 
   /* ---------- ページ送り ---------- */
   function store(){

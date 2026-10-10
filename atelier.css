@@ -797,7 +797,7 @@ body.barhidden #peek::after{opacity:1}
 .anat .sbj{border-bottom:2px solid transparent;padding-bottom:2px;transition:border-color .16s ease}
 .anat .hd,.anat .vb{transition:color .16s ease}
 .anat.a1 .sbj{border-bottom-color:var(--gold)}
-.anat.a2 .hd{color:var(--teal)}
+.anat.a2 .hd{color:var(--gold)}
 .anat .num{font-size:16px;color:var(--fog);opacity:0;transition:opacity .16s ease}
 .anat.a3 .num{opacity:1}
 .anat.a4 .vb{color:var(--rust)}
@@ -810,3 +810,16 @@ body.barhidden #peek::after{opacity:1}
 /* S01：否定・疑問の em を動詞の種類で塗り分ける（02の色の意味をそのまま使う） */
 .dr .line.gv .val em{color:var(--rust)}
 .dr.gv .line .val em{color:var(--rust)}
+
+/* Script のページ：主語と動詞を別々にタップする。
+   太字にすると文字幅が変わって本文がずれるので、text-shadow で太く見せる。 */
+.ptxt .sj{border-bottom:2px solid transparent;padding-bottom:2px;cursor:pointer;
+          transition:border-color .16s ease}
+.ptxt .sj[data-m="1"],.ptxt .sj[data-m="2"]{border-bottom-color:var(--gold)}
+.ptxt .sj .hd{transition:color .16s ease}
+.ptxt .sj[data-m="2"] .hd{color:var(--gold)}
+.ptxt .vb{position:relative;cursor:pointer;transition:color .16s ease}
+.ptxt .vb::after{content:"";position:absolute;left:-7px;right:-7px;top:-9px;bottom:-9px}
+.ptxt .vb[data-m="1"],.ptxt .vb[data-m="2"]{text-shadow:.4px 0 0 currentColor,-.4px 0 0 currentColor}
+.ptxt .vb[data-m="2"]{color:var(--rust)}
+.ptxt .vb.be[data-m="2"]{color:var(--teal)}
