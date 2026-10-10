@@ -158,6 +158,19 @@
     });
   }
 
+  // .anat … 1文を4段階で分解する。どこを触っても次の段階へ。5回目で最初に戻る。
+  function bindAnat(root){
+    root.querySelectorAll('.anat').forEach(box=>{
+      if(box.dataset.anbound) return; box.dataset.anbound=1;
+      box.addEventListener('click', ev=>{
+        ev.stopPropagation();
+        const n = ((+box.dataset.an || 0) + 1) % 5;
+        box.dataset.an = n;
+        for(let k=1;k<=4;k++) box.classList.toggle('a'+k, n>=k);
+      });
+    });
+  }
+
   function bindReveals(root){
     root.querySelectorAll('.rv').forEach(el=>{
       if(el.dataset.bound) return; el.dataset.bound=1;
@@ -177,6 +190,7 @@
   bindOrder(document);
   bindEc(document);
   bindSpot(document);
+  bindAnat(document);
   bindReveals(document);
   bindDrag(document);
   bindGoto(document);
@@ -506,10 +520,11 @@
     sl.querySelectorAll('[data-step]').forEach(x=>x.removeAttribute('data-step'));
     sl.querySelectorAll('[data-st]').forEach(x=>x.removeAttribute('data-st'));
     sl.querySelectorAll('.sp').forEach(x=>{x.classList.remove('on','on2');x.removeAttribute('data-sp');});
+    sl.querySelectorAll('.anat').forEach(x=>{x.classList.remove('a1','a2','a3','a4');x.removeAttribute('data-an');});
     sl.querySelectorAll('.movebox').forEach(b=>b._reset && b._reset());
   }
 
-  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); resetSlide(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindOrder(sl); bindEc(sl); bindSpot(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindMove(sl); bindJudge(sl); }
+  function enter(sl){ stopAudio(); bindPlay(sl); mirror(sl); resetSlide(sl); bindStep(sl); bindGroup(sl); bindHl(sl); bindTr(sl); bindSeq(sl); bindOrder(sl); bindEc(sl); bindSpot(sl); bindAnat(sl); bindReveals(sl); bindDrag(sl); bindGoto(sl); bindMove(sl); bindJudge(sl); }
 
   /* ---------- ページ送り ---------- */
   function store(){

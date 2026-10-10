@@ -788,3 +788,25 @@ body.barhidden #peek::after{opacity:1}
 /* 本文を文字で見せるページ */
 .ptxt{font-family:var(--en);font-size:17px;line-height:1.8;color:var(--ink);width:648px}
 
+
+/* ---------- S01 文のかたち ---------- */
+/* 手順ページ。1文を4段階で分解する（主語のかたまり → 中心 → 数 → 動詞） */
+.anat{display:flex;flex-direction:column;align-items:center;gap:26px;cursor:pointer}
+.anat .sen{font-family:var(--en);font-size:24px;font-weight:700;color:var(--ink);
+           line-height:1.6;text-align:center;max-width:624px}
+.anat .sbj{border-bottom:2px solid transparent;padding-bottom:2px;transition:border-color .16s ease}
+.anat .hd,.anat .vb{transition:color .16s ease}
+.anat.a1 .sbj{border-bottom-color:var(--gold)}
+.anat.a2 .hd{color:var(--teal)}
+.anat .num{font-size:16px;color:var(--fog);opacity:0;transition:opacity .16s ease}
+.anat.a3 .num{opacity:1}
+.anat.a4 .vb{color:var(--rust)}
+.anat.a4 .vb.be{color:var(--teal)}
+
+/* 否定・疑問のシャッフル。行をタップすると、その場で作った形に入れ替わる */
+.ec .r.sw[data-st="1"] .ecw{display:none}
+.ec .r.sw[data-st="1"] .ecc{display:inline}
+
+/* S01：否定・疑問の em を動詞の種類で塗り分ける（02の色の意味をそのまま使う） */
+.dr .line.gv .val em{color:var(--rust)}
+.dr.gv .line .val em{color:var(--rust)}
