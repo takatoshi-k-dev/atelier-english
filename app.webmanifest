@@ -1,0 +1,9 @@
+{
+  "name": "Atelier English",
+  "short_name": "Atelier English",
+  "start_url": "./",
+  "scope": "/atelier-english/",
+  "display": "standalone",
+  "background_color": "#1A1A2E",
+  "theme_color": "#1A1A2E"
+}

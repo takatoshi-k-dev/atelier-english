@@ -1,0 +1,9 @@
+{
+  "name": "復習",
+  "short_name": "復習",
+  "start_url": "./R-S01.html",
+  "scope": "/atelier-english/",
+  "display": "standalone",
+  "background_color": "#1A1A2E",
+  "theme_color": "#1A1A2E"
+}

@@ -260,9 +260,12 @@ h1.showall{padding:6px 10px;margin:15px 0 -6px -10px}
   background:rgba(176,141,87,.55);opacity:0;transition:opacity .2s ease
 }
 body.barhidden #peek::after{opacity:1}
+/* 上にブラウザのバーが出ると、ページ数が白いスライドの上に乗って見えなくなる。
+   版の表示と同じく、背景を敷いてどの地色でも読めるようにする。 */
 #pageno{
   position:fixed;right:12px;bottom:14px;z-index:200;
-  font:600 11px/1 -apple-system,system-ui,sans-serif;color:rgba(255,255,255,.5)
+  font:600 11px/1 -apple-system,system-ui,sans-serif;
+  color:#F2F0EA;background:rgba(20,20,30,.72);padding:4px 8px;border-radius:5px
 }
 #pageno.gone{opacity:0}
 
