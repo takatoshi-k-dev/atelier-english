@@ -827,3 +827,8 @@ body.barhidden #peek::after{opacity:1}
 .ptxt .vb[data-m="1"],.ptxt .vb[data-m="2"]{text-shadow:.4px 0 0 currentColor,-.4px 0 0 currentColor}
 .ptxt .vb[data-m="2"]{color:var(--rust)}
 .ptxt .vb.be[data-m="2"]{color:var(--teal)}
+
+/* 否定・疑問のシャッフルは1問1行。判定の列を使わないので、その分を本文に回す。
+   17pxなら一番長い問題（556px）でも枠608pxに収まり、折り返さない。 */
+.ec .r.sw{grid-template-columns:30px 1fr}
+.ec .r.sw .s{font-size:17px}
