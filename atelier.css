@@ -832,3 +832,6 @@ body.barhidden #peek::after{opacity:1}
    17pxなら一番長い問題（556px）でも枠608pxに収まり、折り返さない。 */
 .ec .r.sw{grid-template-columns:30px 1fr}
 .ec .r.sw .s{font-size:17px}
+
+/* 疑問文＋短答を1行に収める（20pxだと最長603pxで枠564pxに入らない） */
+.dr .line.ans.sm .val{font-size:17px}
