@@ -789,7 +789,7 @@ body.barhidden #peek::after{opacity:1}
              white-space:nowrap;font-size:14px;line-height:1.1;
              color:var(--rust);font-weight:700}
 /* 本文を文字で見せるページ */
-.ptxt{font-family:var(--en);font-size:17px;line-height:1.8;color:var(--ink);width:648px}
+.ptxt{font-family:var(--en);font-size:16px;line-height:2.5;color:var(--ink);width:648px}
 
 
 /* ---------- S01 文のかたち ---------- */
@@ -820,7 +820,8 @@ body.barhidden #peek::after{opacity:1}
           transition:border-color .16s ease}
 .ptxt .sj[data-m="1"],.ptxt .sj[data-m="2"]{border-bottom-color:var(--gold)}
 .ptxt .sj .hd{transition:color .16s ease}
-.ptxt .sj[data-m="2"] .hd{color:var(--gold)}
+.ptxt .sj[data-m="2"] .hd{background:rgba(176,141,87,.30);border-radius:3px;
+                          padding:1px 3px;margin:0 -3px}
 .ptxt .vb{position:relative;cursor:pointer;transition:color .16s ease}
 .ptxt .vb::after{content:"";position:absolute;left:-7px;right:-7px;top:-9px;bottom:-9px}
 .ptxt .vb[data-m="1"],.ptxt .vb[data-m="2"]{text-shadow:.4px 0 0 currentColor,-.4px 0 0 currentColor}
