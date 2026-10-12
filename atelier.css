@@ -835,3 +835,24 @@ body.barhidden #peek::after{opacity:1}
 
 /* 疑問文＋短答を1行に収める（20pxだと最長603pxで枠564pxに入らない） */
 .dr .line.ans.sm .val{font-size:17px}
+
+/* ---------- 整理ページ（R-S01 / 一覧・タップなし） ---------- */
+.smt{width:648px;display:grid;grid-template-columns:46px 1fr 1fr;column-gap:14px}
+.smt.two{grid-template-columns:1fr 1fr}
+.smt .smh{font-size:13px;font-weight:700;padding-bottom:6px;border-bottom:1px solid var(--linec)}
+.smt .smh.be{color:var(--teal)}
+.smt .smh.gv{color:var(--rust)}
+.smt .smg{grid-column:1/-1;font-size:12px;color:var(--fog);padding:9px 0 4px}
+.smt .smg b{font-family:var(--en);font-size:13px;font-weight:700;color:var(--gold);margin-left:8px}
+.smt .sml{font-size:12px;color:var(--fog);padding:4px 0}
+.smt .sme{font-family:var(--en);font-size:15px;color:var(--ink);line-height:1.4;padding:4px 0}
+.smt.two .sme{font-size:17px;padding:7px 0}
+.smt .sme em{font-style:normal;text-shadow:.4px 0 0 currentColor,-.4px 0 0 currentColor}
+.smt .sme.be em{color:var(--teal)}
+.smt .sme.gv em{color:var(--rust)}
+.smt .sme em.vv{color:var(--rust)}
+.smt .sme em.nn{color:var(--teal)}
+.smt.two .sme em{font-size:1.18em}
+.smt .smp{grid-column:1/-1;border-top:1px solid var(--linec);margin-top:16px;padding-top:14px;
+  display:flex;flex-direction:column;gap:4px;align-items:center}
+.smt .smp .sme{font-size:19px}
