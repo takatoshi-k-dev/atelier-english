@@ -842,10 +842,9 @@ body.barhidden #peek::after{opacity:1}
 .smt .smh{font-size:13px;font-weight:700;padding-bottom:6px;border-bottom:1px solid var(--linec)}
 .smt .smh.be{color:var(--teal)}
 .smt .smh.gv{color:var(--rust)}
-.smt .smg{grid-column:1/-1;font-size:12px;color:var(--fog);padding:9px 0 4px}
-.smt .smg b{font-family:var(--en);font-size:13px;font-weight:700;color:var(--gold);margin-left:8px}
-.smt .sml{font-size:12px;color:var(--fog);padding:4px 0}
-.smt .sme{font-family:var(--en);font-size:15px;color:var(--ink);line-height:1.4;padding:4px 0}
+.smt .sms{grid-column:1/-1;height:20px}
+.smt .sml{font-size:12px;color:var(--fog);padding:6px 0}
+.smt .sme{font-family:var(--en);font-size:15px;color:var(--ink);line-height:1.4;padding:6px 0}
 .smt.two .sme{font-size:17px;padding:7px 0}
 .smt .sme em{font-style:normal;text-shadow:.4px 0 0 currentColor,-.4px 0 0 currentColor}
 .smt .sme.be em{color:var(--teal)}
