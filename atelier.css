@@ -241,13 +241,13 @@ h1.showall{padding:6px 10px;margin:15px 0 -6px -10px}
 #bar{
   position:fixed;left:10px;bottom:10px;z-index:200;display:flex;gap:5px;
   flex-wrap:wrap;max-width:calc(100vw - 20px);
-  background:rgba(20,20,30,.85);padding:5px;border-radius:9px;
+  background:rgba(20,20,30,.85);padding:4px 5px;border-radius:9px;
   transition:opacity .18s ease
 }
 #bar button{
   touch-action:manipulation;
   font:600 11px/1 -apple-system,system-ui,sans-serif;color:#EDEBE6;background:transparent;
-  border:1px solid rgba(255,255,255,.22);border-radius:6px;padding:7px 10px;cursor:pointer
+  border:1px solid rgba(255,255,255,.22);border-radius:6px;padding:5px 10px;cursor:pointer
 }
 /* 白紙モードでバーの中身を入れ替える */
 #bar .wbonly{display:none}

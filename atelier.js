@@ -7,15 +7,18 @@
    ========================================================== */
 (function(){
 
-  /* ---------- 版表示（制作中のみ。完成したらこのブロックごと外す） ----------
-     番号の実体は NN_単元名.html の #stage data-ver。HTMLだけ差し替えても表示が変わる。
-     VER は data-ver が無いとき（完成済みコマ）の控え。 */
-  const VER = '1013-4';
-  const verEl = document.createElement('div');
-  verEl.id = 'ver';
+  /* ---------- 版表示（制作中のコマだけ） ----------
+     番号の実体は NN_単元名.html の #stage data-ver。
+     完成したコマは data-ver を外すので、何も出ない。 */
+  const VER = '1013-5';                 // atelier.js 自体の版（画面には出さない）
   const stageVer = (document.getElementById('stage') || {dataset:{}}).dataset.ver;
-  verEl.textContent = stageVer || VER;
-  document.body.appendChild(verEl);
+  let verEl = null;
+  if(stageVer){
+    verEl = document.createElement('div');
+    verEl.id = 'ver';
+    verEl.textContent = stageVer;
+    document.body.appendChild(verEl);
+  }
 
   const stage = document.getElementById('stage');
   const fit   = document.getElementById('fit');
@@ -602,12 +605,25 @@
   const homeBtn = $('home');
   if(homeBtn){
     homeBtn.textContent = 'ホーム';
-    // 生徒ごとの復習一覧（R-S01-… → R-S01.html）。復習ファイルのときだけ出す
-    const who = (decodeURIComponent(location.pathname.split('/').pop()||'')).match(/^R-(S\d+)-/);
+    const here = decodeURIComponent(location.pathname.split('/').pop()||'');
+    const who  = here.match(/^R-(S\d+)-/);
+    let store_ = null;
+    try{ store_ = window.localStorage; }catch(e){}
+
     if(who){
+      // 復習レッスンの中：その生徒の復習一覧へ。あとで戻れるよう、今の場所を覚えておく
       const b = mkbtn('復習一覧', homeBtn);
       b.id='slist';
       b.onclick=()=>{ location.href = 'R-'+who[1]+'.html'; };
+      if(store_) try{ store_.setItem('ae-review', here); }catch(e){}
+    }else if(store_){
+      // 普通のコマ：直前に開いていた復習レッスンがあれば、そこへ戻れるようにする
+      let back=null; try{ back = store_.getItem('ae-review'); }catch(e){}
+      if(back && back !== here){
+        const b = mkbtn('復習に戻る', homeBtn);
+        b.id='slist';
+        b.onclick=()=>{ location.href = back; };
+      }
     }
   }
 
