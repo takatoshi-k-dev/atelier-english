@@ -240,6 +240,7 @@ h1.showall{padding:6px 10px;margin:15px 0 -6px -10px}
    ========================================================== */
 #bar{
   position:fixed;left:10px;bottom:10px;z-index:200;display:flex;gap:6px;
+  flex-wrap:wrap;max-width:calc(100vw - 20px);
   background:rgba(20,20,30,.85);padding:6px;border-radius:10px;
   transition:opacity .18s ease
 }
@@ -855,3 +856,7 @@ body.barhidden #peek::after{opacity:1}
 .smt .smp{grid-column:1/-1;border-top:1px solid var(--linec);margin-top:16px;padding-top:14px;
   display:flex;flex-direction:column;gap:4px;align-items:center}
 .smt .smp .sme{font-size:19px}
+
+/* ---------- ホワイトボード（白紙モード） ---------- */
+#wb{position:absolute;inset:0;z-index:40;background:var(--paper);display:none}
+#wb.on{display:block}

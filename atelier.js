@@ -10,7 +10,7 @@
   /* ---------- 版表示（制作中のみ。完成したらこのブロックごと外す） ----------
      番号の実体は NN_単元名.html の #stage data-ver。HTMLだけ差し替えても表示が変わる。
      VER は data-ver が無いとき（完成済みコマ）の控え。 */
-  const VER = '0922-7';
+  const VER = '1013-3';
   const verEl = document.createElement('div');
   verEl.id = 'ver';
   const stageVer = (document.getElementById('stage') || {dataset:{}}).dataset.ver;
@@ -25,6 +25,7 @@
   const bar   = document.getElementById('bar');
   const pageno= document.getElementById('pageno');
   let cur = 0;
+  let wbOn=false, wbSaved=null, wbEl=null, wbBtn=null;   // ホワイトボード
   let swipedAt = 0;          // 直近のページ送り（払い）の時刻
 
   /* ---------- 画面サイズに合わせて拡大縮小 ---------- */
@@ -555,6 +556,7 @@
     ctx.restore(); setStroke();
   }
   function go(d){
+    if(wbOn) wbSet(false);
     const n = Math.max(0, Math.min(slides.length-1, cur+d));
     if(n===cur) return;
     store();
@@ -578,10 +580,69 @@
   $('next').onclick=()=>go(1);
   $('pen').onclick=()=>{mode='pen';$('pen').classList.add('act');$('era').classList.remove('act');setStroke();};
   $('era').onclick=()=>{mode='era';$('era').classList.add('act');$('pen').classList.remove('act');setStroke();};
-  $('clr').onclick=()=>{ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,cv.width,cv.height);ctx.restore();delete saved[cur];setStroke();};
+  $('clr').onclick=()=>{ wbClear(); if(wbOn) wbSaved=null; else delete saved[cur]; };
   $('rst').onclick=()=>resetSlide(slides[cur]);
   if(document.getElementById('fix')) $('fix').onclick=reset;
   if(document.getElementById('home')) $('home').onclick=()=>{ location.href='index.html'; };
+
+  /* ---------- バーのボタンを足す（HTMLは触らない） ---------- */
+  function mkbtn(label, before){
+    const b=document.createElement('button');
+    b.textContent=label;
+    if(before && before.parentNode) before.parentNode.insertBefore(b, before);
+    else bar.appendChild(b);
+    return b;
+  }
+
+  const homeBtn = $('home');
+  if(homeBtn){
+    homeBtn.textContent = 'ホーム';
+    // 生徒ごとの復習一覧（R-S01-… → R-S01.html）。復習ファイルのときだけ出す
+    const who = (decodeURIComponent(location.pathname.split('/').pop()||'')).match(/^R-(S\d+)-/);
+    if(who){
+      const b = mkbtn('復習一覧', homeBtn);
+      b.id='slist';
+      b.onclick=()=>{ location.href = 'R-'+who[1]+'.html'; };
+    }
+  }
+
+  /* ---------- ホワイトボード（白紙モード） ---------- */
+  // スライドの上に白紙をかぶせるだけ。ページの線と白紙の線は別々に持つので、
+  // 行き来しても消えない。
+  wbEl = document.createElement('div');
+  wbEl.id='wb';
+  stage.insertBefore(wbEl, cv);
+
+  function wbSnap(){
+    const c=document.createElement('canvas');
+    c.width=cv.width; c.height=cv.height;
+    c.getContext('2d').drawImage(cv,0,0);
+    return c;
+  }
+  function wbClear(){
+    ctx.save(); ctx.setTransform(1,0,0,1,0,0);
+    ctx.clearRect(0,0,cv.width,cv.height); ctx.restore(); setStroke();
+  }
+  function wbSet(on){
+    if(on===wbOn) return;
+    if(on){
+      store();                      // 今のページの線をしまう
+      wbClear();
+      if(wbSaved){
+        ctx.save(); ctx.setTransform(1,0,0,1,0,0);
+        ctx.drawImage(wbSaved,0,0); ctx.restore(); setStroke();
+      }
+    }else{
+      wbSaved = wbSnap();           // 白紙の線をしまう
+      recall();                     // ページの線を戻す
+    }
+    wbOn = on;
+    wbEl.classList.toggle('on', on);
+    if(wbBtn) wbBtn.classList.toggle('act', on);
+  }
+  wbBtn = mkbtn('ホワイトボード', $('fix') || null);
+  wbBtn.id='wbb';
+  wbBtn.onclick=()=>wbSet(!wbOn);
   $('hide').onclick=()=>{ setBar(false); };
   const peek=$('peek');
   if(peek) peek.addEventListener('click',()=>{ setBar(true); });
@@ -660,6 +721,7 @@
         ((lab&&lab.textContent.trim()) || (eye&&eye.textContent.trim()) || '')+'</span>';
       cell.addEventListener('click', ev=>{
         ev.stopPropagation();
+        if(wbOn) wbSet(false);
         store();
         slides[cur].classList.remove('on');
         cur=i; slides[cur].classList.add('on');
