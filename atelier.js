@@ -10,7 +10,7 @@
   /* ---------- 版表示（制作中のみ。完成したらこのブロックごと外す） ----------
      番号の実体は NN_単元名.html の #stage data-ver。HTMLだけ差し替えても表示が変わる。
      VER は data-ver が無いとき（完成済みコマ）の控え。 */
-  const VER = '1013-3';
+  const VER = '1013-4';
   const verEl = document.createElement('div');
   verEl.id = 'ver';
   const stageVer = (document.getElementById('stage') || {dataset:{}}).dataset.ver;
@@ -25,7 +25,8 @@
   const bar   = document.getElementById('bar');
   const pageno= document.getElementById('pageno');
   let cur = 0;
-  let wbOn=false, wbSaved=null, wbEl=null, wbBtn=null;   // ホワイトボード
+  let wbOn=false, wbEl=null, wbBtn=null;                 // ホワイトボード
+  let wbPages=[], wbCur=0;                               // 白紙は複数枚
   let swipedAt = 0;          // 直近のページ送り（払い）の時刻
 
   /* ---------- 画面サイズに合わせて拡大縮小 ---------- */
@@ -566,7 +567,11 @@
     enter(slides[cur]);
     recall(); mark();
   }
-  function mark(){ if(pageno) pageno.textContent = (cur+1)+' / '+slides.length; }
+  function mark(){
+    if(!pageno) return;
+    pageno.textContent = wbOn ? ('白紙 '+(wbCur+1)+' / '+wbPages.length)
+                              : ((cur+1)+' / '+slides.length);
+  }
 
   /* ---------- ツールバー ---------- */
   function setBar(show){
@@ -580,7 +585,7 @@
   $('next').onclick=()=>go(1);
   $('pen').onclick=()=>{mode='pen';$('pen').classList.add('act');$('era').classList.remove('act');setStroke();};
   $('era').onclick=()=>{mode='era';$('era').classList.add('act');$('pen').classList.remove('act');setStroke();};
-  $('clr').onclick=()=>{ wbClear(); if(wbOn) wbSaved=null; else delete saved[cur]; };
+  $('clr').onclick=()=>{ wbClear(); if(wbOn) wbPages[wbCur]=null; else delete saved[cur]; };
   $('rst').onclick=()=>resetSlide(slides[cur]);
   if(document.getElementById('fix')) $('fix').onclick=reset;
   if(document.getElementById('home')) $('home').onclick=()=>{ location.href='index.html'; };
@@ -606,9 +611,9 @@
     }
   }
 
-  /* ---------- ホワイトボード（白紙モード） ---------- */
+  /* ---------- ホワイトボード（白紙モード・複数枚） ---------- */
   // スライドの上に白紙をかぶせるだけ。ページの線と白紙の線は別々に持つので、
-  // 行き来しても消えない。
+  // 行き来しても消えない。白紙の中は左右に払ってめくる。
   wbEl = document.createElement('div');
   wbEl.id='wb';
   stage.insertBefore(wbEl, cv);
@@ -623,26 +628,59 @@
     ctx.save(); ctx.setTransform(1,0,0,1,0,0);
     ctx.clearRect(0,0,cv.width,cv.height); ctx.restore(); setStroke();
   }
+  function wbDraw(){                 // 今の白紙を画面に出す
+    wbClear();
+    const c=wbPages[wbCur];
+    if(c){ ctx.save(); ctx.setTransform(1,0,0,1,0,0); ctx.drawImage(c,0,0); ctx.restore(); setStroke(); }
+  }
+  function wbKeep(){ wbPages[wbCur]=wbSnap(); }   // 今の白紙をしまう
+
   function wbSet(on){
     if(on===wbOn) return;
     if(on){
-      store();                      // 今のページの線をしまう
-      wbClear();
-      if(wbSaved){
-        ctx.save(); ctx.setTransform(1,0,0,1,0,0);
-        ctx.drawImage(wbSaved,0,0); ctx.restore(); setStroke();
-      }
+      store();                       // ページの線をしまう
+      if(!wbPages.length){ wbPages=[null]; wbCur=0; }
+      wbDraw();
     }else{
-      wbSaved = wbSnap();           // 白紙の線をしまう
-      recall();                     // ページの線を戻す
+      wbKeep();
+      recall();                      // ページの線を戻す
     }
     wbOn = on;
     wbEl.classList.toggle('on', on);
-    if(wbBtn) wbBtn.classList.toggle('act', on);
+    document.body.classList.toggle('wbon', on);
+    mark();
   }
+  function wbGo(d){                  // 白紙をめくる（端で止まる）
+    const n=Math.max(0, Math.min(wbPages.length-1, wbCur+d));
+    if(n===wbCur) return;
+    wbKeep(); wbCur=n; wbDraw(); mark();
+  }
+  function wbAdd(){                  // 白紙を1枚足して、そこへ移る
+    wbKeep(); wbPages.push(null); wbCur=wbPages.length-1; wbDraw(); mark();
+  }
+
   wbBtn = mkbtn('ホワイトボード', $('fix') || null);
   wbBtn.id='wbb';
-  wbBtn.onclick=()=>wbSet(!wbOn);
+  wbBtn.onclick=()=>wbSet(true);
+
+  const wbBack = mkbtn('レッスンに戻る', null);
+  wbBack.id='wbback'; wbBack.className='wbonly';
+  wbBack.onclick=()=>wbSet(false);
+
+  const wbNew = mkbtn('白紙を追加', null);
+  wbNew.id='wbnew'; wbNew.className='wbonly';
+  wbNew.onclick=wbAdd;
+
+  // 白紙のときに隠すもの
+  ['prev','next','list','slist','home','wbb','fix'].forEach(id=>{
+    const e=$(id); if(e) e.classList.add('lessononly');
+  });
+  const seps=[...bar.querySelectorAll('.sep')];
+  if(seps[0]) seps[0].classList.add('lessononly');
+
+  // 使っていないボタンは外す（二本指タップでバーの出し入れはできる）
+  // 他の場所で onclick を付け終わってから外す
+  setTimeout(()=>{ ['rst','hide'].forEach(id=>{ const e=$(id); if(e) e.remove(); }); }, 0);
   $('hide').onclick=()=>{ setBar(false); };
   const peek=$('peek');
   if(peek) peek.addEventListener('click',()=>{ setBar(true); });
@@ -674,7 +712,7 @@
     sw=null;
     if(dt<700 && Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)*1.6){
       swipedAt = Date.now();                    // 直後のタップを無視するため記録
-      go(dx<0 ? 1 : -1);                        // 左へ払う＝次、右へ払う＝前
+      if(wbOn) wbGo(dx<0 ? 1 : -1); else go(dx<0 ? 1 : -1);   // 左へ払う＝次、右へ払う＝前
     }
   }, {passive:true});
 
